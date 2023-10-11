@@ -1,6 +1,6 @@
 import pandas as pd
 
-regionF = ["Auvergne", "Bourgogne", "Bretagne", "Centre", "GrandEst", "HautsdeFrance", "IledeFrance", "Normandie","NouvelleAquitaine", "Occitanie", "PACA", "PaysdelaLoire"]
+# regionF = ["Auvergne", "Bourgogne", "Bretagne", "Centre", "GrandEst", "HautsdeFrance", "IledeFrance", "Normandie","NouvelleAquitaine", "Occitanie", "PACA", "PaysdelaLoire"]
 
 # Tester le script sur une seule region
 # regionF = ["Centre"]
