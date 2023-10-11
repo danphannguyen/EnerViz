@@ -31,18 +31,28 @@ for valR in regionF:
         df = pd.DataFrame(excel['Feuil1'])
         
         # Parcourir les 12 mois ( test réduire à 1 )
-        for Month in range(12) :
+        for Month in range(1) :
             
             # Parcours toute les dates possible ( test réduire à 1 )
-            for day in range(31) :
+            for day in range(1) :
                 
                 # Création de la date à filtrer
                 date = str(valA) + "-" + str(Month+1) + "-" + str(day+1)
                 
                 # Filtrage avec la date voulue ainsi que si df"Consommation" = true
-                filter_df = df.loc[(df['Date'] == date ) & (df['Consommation'])]
-                
+                filter_df = df.loc[(df['Date'] == date ) & (df['Consommation']) & (df['Consommation'] != "ND")]
                 print(filter_df)
+                
+                totalconso = filter_df['Consommation'].astype(int).sum()
+                totalTherm = filter_df['Thermique'].astype(int).sum()
+                totalNucl = filter_df['NuclÈaire'].astype(int).sum()
+                totalEol = filter_df['Eolien'].astype(int).sum()
+                totalSol = filter_df['Solaire'].astype(int).sum()
+                totalHydrau = filter_df['Hydraulique'].astype(int).sum()
+                totalBio = filter_df['BioÈnergies'].astype(int).sum()
+                
+                print(totalconso, totalTherm, totalNucl, totalEol, totalSol, totalHydrau, totalBio)
+                
                 
             
         # Affichage des années validées
