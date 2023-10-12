@@ -1,6 +1,6 @@
 import pandas as pd
 
-# regionF = ["Auvergne", "Bourgogne", "Bretagne", "Centre", "GrandEst", "HautsdeFrance", "IledeFrance", "Normandie","NouvelleAquitaine", "Occitanie", "PACA", "PaysdelaLoire"]
+columns = ["Consommation", "Thermique", "NuclÈaire", "Eolien", "Solaire", "Hydraulique", "BioÈnergies"]
 
 # Tester le script sur une seule region
 regionF = ["Auvergne"]
@@ -21,13 +21,15 @@ for valR in regionF:
     for valA in annee: 
         
         # Variable dynamique pour le nom du fichier
-        file = "./Data Mix/" + valR + "/" + str(valA) + ".xlsx"
+        file = "./" + valR + "/" + str(valA) + ".xlsx"
         # print(file)
         
         # Lecture du fichier excel
         excel = pd.read_excel(file, engine='openpyxl', sheet_name=None)
         df = pd.DataFrame(excel['Feuil1'])
-        
+        # Remplace toute les valeurs '-' par 0
+        df = df.replace(['-'], 0)
+
         # Parcourir les 12 mois ( test réduire à 1 )
         for Month in range(12) :
             
@@ -81,10 +83,9 @@ for valR in regionF:
 # Création d'un dataframe pour dataMonth
 dfMonth = pd.DataFrame(dataMonth, columns=['Région','Date', 'Consommation', 'Thermique', 'Nucleaire', 'Eolien', 'Solaire', 'Hydraulique', 'BioEnergie'])
 
-# resultPath = '/Data Mix/Resultat/' + str(valR) + '.xlsx'
-# print(resultPath)
+resultPath = './Resultat/' + str(valR) + '.xlsx'
 
 # Création du fichier excel
-with pd.ExcelWriter('./resultat/Auvergne.xlsx',mode='w') as writer:  dfMonth.to_excel(writer, sheet_name='Feuil1', index=False)
+with pd.ExcelWriter(resultPath,mode='w') as writer:  dfMonth.to_excel(writer, sheet_name='Feuil1', index=False)
 
     
