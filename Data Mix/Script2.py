@@ -6,32 +6,33 @@ import pandas as pd
 regionF = ["Auvergne"]
 
 # List des années dans chaque region
-annee = ["2013"]
+annee = [2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021]
 
 # Initialisation de la variable Dataresult
 dataResult = []
-dataDay = []
-dataMonth = []
 
 # Parcours du tableau des regions
 for valR in regionF:
+
+    dataDay = []
+    dataMonth = []
 
     # Parcours du tableau des années
     for valA in annee: 
         
         # Variable dynamique pour le nom du fichier
         file = "./Data Mix/" + valR + "/" + str(valA) + ".xlsx"
-        print(file)
+        # print(file)
         
         # Lecture du fichier excel
         excel = pd.read_excel(file, engine='openpyxl', sheet_name=None)
         df = pd.DataFrame(excel['Feuil1'])
         
         # Parcourir les 12 mois ( test réduire à 1 )
-        for Month in range(1) :
+        for Month in range(12) :
             
             # Parcours toute les dates possible ( test réduire à 1 )
-            for day in range(35) :
+            for day in range(31) :
                 
                 # Création de la date à filtrer
                 date = str(valA) + "-" + str(Month+1) + "-" + str(day+1)
@@ -57,36 +58,33 @@ for valR in regionF:
                     # Dans le cas ou la date n'existe pas on sort de la boucle
                     break
 
-            dataDay = pd.DataFrame(dataDay, columns=['Région','Date', 'Consommation', 'Thermique', 'Nucleaire', 'Eolien', 'Solaire', 'Hydraulique', 'BioEnergie'])
+            # Création d'un dataframe pour dataDay
+            dfDay = pd.DataFrame(dataDay, columns=['Région','Date', 'Consommation', 'Thermique', 'Nucleaire', 'Eolien', 'Solaire', 'Hydraulique', 'BioEnergie'])
             
-            print(dataDay)
-            
+            # Récupération et sommes des colonnes
             dateM = str(valA) + "-" + str(Month+1)
-            totalconso = dataDay['Consommation'].astype(int).sum()
-            totalTherm = dataDay['Thermique'].astype(int).sum()
-            totalNucl = dataDay['Nucleaire'].astype(int).sum()
-            totalEol = dataDay['Eolien'].astype(int).sum()
-            totalSol = dataDay['Solaire'].astype(int).sum()
-            totalHydrau = dataDay['Hydraulique'].astype(int).sum()
-            totalBio = dataDay['BioEnergie'].astype(int).sum()
+            totalconso = dfDay['Consommation'].astype(int).sum()
+            totalTherm = dfDay['Thermique'].astype(int).sum()
+            totalNucl = dfDay['Nucleaire'].astype(int).sum()
+            totalEol = dfDay['Eolien'].astype(int).sum()
+            totalSol = dfDay['Solaire'].astype(int).sum()
+            totalHydrau = dfDay['Hydraulique'].astype(int).sum()
+            totalBio = dfDay['BioEnergie'].astype(int).sum()
             
+            # Ajout des données dans dataMonth
             dataMonth.append((valR, dateM, totalconso, totalTherm, totalNucl, totalEol, totalSol, totalHydrau, totalBio))
             
-            dataMonth = pd.DataFrame(dataMonth, columns=['Région','Date', 'Consommation', 'Thermique', 'Nucleaire', 'Eolien', 'Solaire', 'Hydraulique', 'BioEnergie'])
-            
-            print(dataMonth)
-                
             
         # Affichage des années validées
-        # print (str(val) + " ✅")
+        print (str(valA) + " ✅")
+        
+# Création d'un dataframe pour dataMonth
+dfMonth = pd.DataFrame(dataMonth, columns=['Région','Date', 'Consommation', 'Thermique', 'Nucleaire', 'Eolien', 'Solaire', 'Hydraulique', 'BioEnergie'])
 
-    # Affichage des régions validées
-    # print(str(valR) + " ✅")
-    
-# Création du dataframe
-# data = pd.DataFrame(data)
+# resultPath = '/Data Mix/Resultat/' + str(valR) + '.xlsx'
+# print(resultPath)
 
 # Création du fichier excel
-# with pd.ExcelWriter('./Resultat/Region.xlsx',mode='a',if_sheet_exists='replace') as writer:  data.to_excel(writer, sheet_name='Feuil1', index=False)
+with pd.ExcelWriter('./resultat/Auvergne.xlsx',mode='w') as writer:  dfMonth.to_excel(writer, sheet_name='Feuil1', index=False)
 
     
