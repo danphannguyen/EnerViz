@@ -1,9 +1,10 @@
 import pandas as pd
 
+dataColumns = ['Region','Date', 'Consommation', 'Thermique', 'Nucleaire', 'Eolien', 'Solaire', 'Hydraulique', 'BioEnergie']
 columns = ["Consommation", "Thermique", "NuclÈaire", "Eolien", "Solaire", "Hydraulique", "BioÈnergies"]
 
 # Tester le script sur une seule region
-regionF = ["Auvergne"]
+regionF = ["PACA"]
 
 # List des années dans chaque region
 annee = [2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021]
@@ -61,7 +62,7 @@ for valR in regionF:
                     break
 
             # Création d'un dataframe pour dataDay
-            dfDay = pd.DataFrame(dataDay, columns=['Région','Date', 'Consommation', 'Thermique', 'Nucleaire', 'Eolien', 'Solaire', 'Hydraulique', 'BioEnergie'])
+            dfDay = pd.DataFrame(dataDay, columns=dataColumns)
             
             # Récupération et sommes des colonnes
             dateM = str(valA) + "-" + str(Month+1)
@@ -76,16 +77,31 @@ for valR in regionF:
             # Ajout des données dans dataMonth
             dataMonth.append((valR, dateM, totalconso, totalTherm, totalNucl, totalEol, totalSol, totalHydrau, totalBio))
             
-            
+            # Creation d'un dataframe pour faire la somme des colonnes
+            dfMonth = pd.DataFrame(dataMonth, columns=dataColumns)
+                        
+        # Sommes de toutes les colonnes
+        dateA = str(valA)
+        c = dfMonth['Consommation'].astype(int).sum()
+        t = dfMonth['Thermique'].astype(int).sum()
+        n = dfMonth['Nucleaire'].astype(int).sum()
+        e = dfMonth['Eolien'].astype(int).sum()
+        s = dfMonth['Solaire'].astype(int).sum()
+        h = dfMonth['Hydraulique'].astype(int).sum()
+        b = dfMonth['BioEnergie'].astype(int).sum()  
+                
+        # Rajout la ligne du totale d'une année
+        dataMonth.append((valR, dateA, c, t, n, e, s, h, b))
+
         # Affichage des années validées
-        print (str(valA) + " ✅")
+        print (str(valA) + " ✅")    
         
 # Création d'un dataframe pour dataMonth
-dfMonth = pd.DataFrame(dataMonth, columns=['Région','Date', 'Consommation', 'Thermique', 'Nucleaire', 'Eolien', 'Solaire', 'Hydraulique', 'BioEnergie'])
+dfData = pd.DataFrame(dataMonth, columns=dataColumns)
 
 resultPath = './Resultat/' + str(valR) + '.xlsx'
 
 # Création du fichier excel
-with pd.ExcelWriter(resultPath,mode='w') as writer:  dfMonth.to_excel(writer, sheet_name='Feuil1', index=False)
+with pd.ExcelWriter(resultPath,mode='w') as writer:  dfData.to_excel(writer, sheet_name='Feuil1', index=False)
 
     
