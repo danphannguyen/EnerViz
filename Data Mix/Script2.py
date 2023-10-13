@@ -99,7 +99,7 @@ for valR in regionF:
 # Création d'un dataframe pour dataMonth
 dfData = pd.DataFrame(dataMonth, columns=dataColumns)
 
-resultPath = './Resultat/' + str(valR) + '.xlsx'
+resultPath = './ResultatExcel/' + str(valR) + '.xlsx'
 
 # Création du fichier excel
 with pd.ExcelWriter(resultPath,mode='w') as writer:  dfData.to_excel(writer, sheet_name='Feuil1', index=False)
