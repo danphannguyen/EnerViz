@@ -1,10 +1,10 @@
 import pandas as pd
 
-dataColumns = ['Region','Date', 'Consommation', 'Thermique', 'Nucleaire', 'Eolien', 'Solaire', 'Hydraulique', 'BioEnergie']
+dataColumns = ['Region','Date', 'Consommation', 'Production','Thermique', 'Nucleaire', 'Eolien', 'Solaire', 'Hydraulique', 'BioEnergie']
 columns = ["Consommation", "Thermique", "NuclÈaire", "Eolien", "Solaire", "Hydraulique", "BioÈnergies"]
 
-# Tester le script sur une seule region
-regionF = ["PACA"]
+# Tester le script sur une region
+regionF = ["PaysdelaLoire"]
 
 # List des années dans chaque region
 annee = [2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021]
@@ -48,15 +48,17 @@ for valR in regionF:
                     
                     # Sommes pour 1 jour entier
                     totalDconso = filter_df['Consommation'].astype(int).sum()
+                    
                     totalDTherm = filter_df['Thermique'].astype(int).sum()
                     totalDNucl = filter_df['NuclÈaire'].astype(int).sum()
                     totalDEol = filter_df['Eolien'].astype(int).sum()
                     totalDSol = filter_df['Solaire'].astype(int).sum()
                     totalDHydrau = filter_df['Hydraulique'].astype(int).sum()
                     totalDBio = filter_df['BioÈnergies'].astype(int).sum()
+                    totalDProd = totalDTherm + totalDNucl + totalDEol + totalDSol + totalDHydrau + totalDBio
                     
                     # Ajout des résultats dans data résultats
-                    dataDay.append((valR, date, totalDconso, totalDTherm, totalDNucl, totalDEol, totalDSol, totalDHydrau, totalDBio))
+                    dataDay.append((valR, date, totalDconso, totalDProd, totalDTherm, totalDNucl, totalDEol, totalDSol, totalDHydrau, totalDBio))
                 else:
                     # Dans le cas ou la date n'existe pas on sort de la boucle
                     break
@@ -74,8 +76,10 @@ for valR in regionF:
             totalHydrau = dfDay['Hydraulique'].astype(int).sum()
             totalBio = dfDay['BioEnergie'].astype(int).sum()
             
+            totalProd = totalTherm + totalNucl + totalEol + totalSol + totalHydrau + totalBio
+            
             # Ajout des données dans dataMonth
-            dataMonth.append((valR, dateM, totalconso, totalTherm, totalNucl, totalEol, totalSol, totalHydrau, totalBio))
+            dataMonth.append((valR, dateM, totalconso, totalProd, totalTherm, totalNucl, totalEol, totalSol, totalHydrau, totalBio))
             
             # Creation d'un dataframe pour faire la somme des colonnes
             dfMonth = pd.DataFrame(dataMonth, columns=dataColumns)
@@ -83,6 +87,7 @@ for valR in regionF:
         # Sommes de toutes les colonnes
         dateA = str(valA)
         c = dfMonth['Consommation'].astype(int).sum()
+        p = dfMonth['Production'].astype(int).sum()
         t = dfMonth['Thermique'].astype(int).sum()
         n = dfMonth['Nucleaire'].astype(int).sum()
         e = dfMonth['Eolien'].astype(int).sum()
@@ -91,7 +96,7 @@ for valR in regionF:
         b = dfMonth['BioEnergie'].astype(int).sum()  
                 
         # Rajout la ligne du totale d'une année
-        dataMonth.append((valR, dateA, c, t, n, e, s, h, b))
+        dataMonth.append((valR, dateA, c, p, t, n, e, s, h, b))
 
         # Affichage des années validées
         print (str(valA) + " ✅")    
