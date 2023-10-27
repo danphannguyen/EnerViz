@@ -91,10 +91,10 @@ const chart = new Chart(ctx, {
     }
 });
 
-
 //Fonction pour mettre à jour le chart 
-function updateChart (chart) {
+function updateChart (chart, nouveauxDatasets) {
     let dataEvolution = chart.data.datasets[0]
+
 
      // Mise à jour des données du graphique en fonction de la valeur de isProd
      dataEvolution.data = isProd ? prod : conso;
@@ -106,27 +106,64 @@ function updateChart (chart) {
 
     chart.options.scales.y.max = isProd ? 200000000 : 120000000 ;
 
+
+
+  //AJOUTER DES LIGNES DANS LE GRAPHIQUE
+  //ça fonctionne pas parce que j'ajoute des datasets mais je ne supprime pas les anciennes donc les modification que je fais sur data après casse tt :c
+
+    nouveauxDatasets.forEach((newDataset) => {
+      // Crée un nouveau jeu de données (dataset) pour les nouvelles données
+      const dataset = {
+        label: `test`,
+        data: newDataset.data, 
+        borderWidth: 1,
+        borderColor: newDataset.borderColor, 
+        backgroundColor: newDataset.backgroundColor,
+      };
+  
+      // Ajoute le nouveau jeu de données à votre tableau de datasets
+      chart.data.datasets.push(dataset);
+    });
+    
     chart.update();
 }
 
-/* function createMultiLineChart(chart) {
-  // Mise à jour des données de la chart en donnant à data les tableaux appropriés (thermique, nucléaire, eolien, ...)
-  chart.data.datasets[0].data = thermique;
-  chart.data.datasets[1].data = nucléaire;
-  chart.data.datasets[2].data = eolien;
-  chart.data.datasets[3].data = solaire;
-  chart.data.datasets[4].data = hydraulique;
-  chart.data.datasets[5].data = bioénergies;
+//Création d'un tableau de datasets pour chacune des energies
+const nouveauxDatasets = [
+  {
+    data: thermique,
+    borderColor: 'green',
+    backgroundColor: 'green',
+  },
+  {
+    data: nucléaire,
+    borderColor: 'yellow',
+    backgroundColor: 'yellow',
+  },
+  {
+    data: eolien,
+    borderColor: 'orange',
+    backgroundColor: 'orange',
+  },
+  {
+    data: solaire,
+    borderColor: 'purple',
+    backgroundColor: 'purple',
+  },
+  {
+    data: hydraulique,
+    borderColor: 'pink',
+    backgroundColor: 'pink',
+  },
+  {
+    data: bioénergies,
+    borderColor: 'brown',
+    backgroundColor: 'brown',
+  },
+];
 
-  // Mise à jour des labels des datasets
-  chart.data.datasets[0].label = `Évolution de la production thermique en ${GLOBAL_DATA.Nom} entre 2013 et 2021 (en Kw/h)`;
-  chart.data.datasets[1].label = `Évolution de la production nucléaire en ${GLOBAL_DATA.Nom} entre 2013 et 2021 (en Kw/h)`;
-  chart.data.datasets[2].label = `Évolution de la production éolienne en ${GLOBAL_DATA.Nom} entre 2013 et 2021 (en Kw/h)`;
-  chart.data.datasets[3].label = `Évolution de la production solaire en ${GLOBAL_DATA.Nom} entre 2013 et 2021 (en Kw/h)`;
-  chart.data.datasets[4].label = `Évolution de la production hydraulique en ${GLOBAL_DATA.Nom} entre 2013 et 2021 (en Kw/h)`;
-  chart.data.datasets[5].label = `Évolution de la production bioénergies en ${GLOBAL_DATA.Nom} entre 2013 et 2021 (en Kw/h)`;
+updateChart(chart, nouveauxDatasets);
 
-} */
 
 //Fonction pour changer de type de données
 function changeGlobalData(data, chart) {
@@ -136,7 +173,7 @@ function changeGlobalData(data, chart) {
     prod = []
 
     //selectionne les données et les push dans mes tableaux
-    GLOBAL_DATA.Evolution.forEach((element) => {
+    GLOBAL_DATA.Evolution.forEach((element) => { //c'est ici que ça pose problème
         conso.push(element.Consommation);
         prod.push(element.Production);
     });
@@ -160,7 +197,7 @@ dataType.addEventListener('click', (e) => {
 * CHANGEMENT DU GRAPH AVEC LE FILTRE NRJ
 */
 
-/* //CREATION D'UNE NOUVELLE CHART AU CLICK SUR UN BOUTON NRJ
+//CREATION D'UNE NOUVELLE CHART AU CLICK SUR UN BOUTON NRJ
 function changeData(data, chart) {
     GLOBAL_DATA = data;
 
@@ -183,7 +220,7 @@ function changeData(data, chart) {
     });
 
     updateChart(chart);
-} */
+}
 
 /* NRJ.forEach(function (element) {
   element.addEventListener('click', function () {
