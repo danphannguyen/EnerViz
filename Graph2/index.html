@@ -10,18 +10,14 @@
 <body>
 
     <h1 id="titre"></h1>
-    
-    <label class="switch">
-        <input type="checkbox">
-        <span class="slider round"></span>
-    </label>
 
-    <button class="filter" id="Thermique">Thermique</button>
-    <button class="filter" id="Nucleaire">Nucléaire</button>
-    <button class="filter" id="Eolien">Eolien</button>
-    <button class="filter" id="Solaire">Solaire</button>
-    <button class="filter" id="Hydraulique">Hydraulique</button>
-    <button class="filter" id="BioEnergies">Bioénergies</button>
+    <input type="checkbox"> Production ou Consommation <br> <br>
+    <input class="filter" type="checkbox" value="0" id="Thermique">Thermique <br>
+    <input class="filter" type="checkbox" value="1" id="Nucleaire">Nucléaire <br>
+    <input class="filter" type="checkbox" value="2" id="Eolien">Eolien <br>
+    <input class="filter" type="checkbox" value="3" id="Solaire">Solaire <br>
+    <input class="filter" type="checkbox" value="4" id="Hydraulique">Hydraulique <br>
+    <input class="filter" type="checkbox" value="5" id="BioEnergies">Bioénergies <br>
 
     <canvas id="monGraphique"></canvas>
 
@@ -39,7 +35,8 @@
     <button class="region" id="PACA">Provence-Alpes-Côte d'Azur</button>
 </body>
 
-<script type="module" src="chart.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script type="module" src="chart.js"></script>
 
 </html>

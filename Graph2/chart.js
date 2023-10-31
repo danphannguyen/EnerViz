@@ -38,104 +38,99 @@ const myChart = new Chart(ctx, {
 });
 
 
-// Sélections de tout les boutons filtres
-const filters = document.querySelectorAll('.region');
 
 // AddEventlistener 'click' sur chaque boutons
-filters.forEach(filter => {
-    filter.addEventListener('click', function handleClick(event) {
+$(".region").click(function () {
 
-        // Récupération de l'id dans une variable
-        let targetId = event.target.id;
+    // Récupération de l'id dans une variable
+    let targetId = event.target.id;
 
-        document.querySelector("#titre").innerHTML = targetId;
+    document.querySelector("#titre").innerHTML = targetId;
 
-        // Comparaison de l'ID et de la case région de chaque object[0]
-        arrayData.forEach(array => {
-            if (array[0].Region === targetId) {
+    // Comparaison de l'ID et de la case région de chaque object[0]
+    arrayData.forEach(array => {
+        if (array[0].Region === targetId) {
 
-                // Initialisation des tableaux
-                let dataThermique = [];
-                let dataNucleaire = [];
-                let dataEolien = [];
-                let dataSolaire = [];
-                let dataHydraulique = [];
-                let dataBioenergie = [];
-                // Permet de lister toutes les Energies que l'on cherche
-                let arrayNRJ = []
+            // Initialisation des tableaux
+            let dataThermique = [];
+            let dataNucleaire = [];
+            let dataEolien = [];
+            let dataSolaire = [];
+            let dataHydraulique = [];
+            let dataBioenergie = [];
+            // Permet de lister toutes les Energies que l'on cherche
+            let arrayNRJ = []
 
-                // Parcours de tout les éléments contenu dans le JSON sélectionné
-                array.forEach((element) => {
+            // Parcours de tout les éléments contenu dans le JSON sélectionné
+            array.forEach((element) => {
 
-                    // Comparaison avec la liste d'années voulue
-                    arrayAnnees.forEach((annee) => {
+                // Comparaison avec la liste d'années voulue
+                arrayAnnees.forEach((annee) => {
 
-                        // Push dans les tableaux seulement si la date correspond
-                        if (element.Date == annee) {
-                            dataThermique.push(element.Thermique);
-                            dataNucleaire.push(element.Nucleaire);
-                            dataEolien.push(element.Eolien);
-                            dataSolaire.push(element.Solaire);
-                            dataHydraulique.push(element.Hydraulique);
-                            dataBioenergie.push(element.BioEnergie);
-                        }
+                    // Push dans les tableaux seulement si la date correspond
+                    if (element.Date == annee) {
+                        dataThermique.push(element.Thermique);
+                        dataNucleaire.push(element.Nucleaire);
+                        dataEolien.push(element.Eolien);
+                        dataSolaire.push(element.Solaire);
+                        dataHydraulique.push(element.Hydraulique);
+                        dataBioenergie.push(element.BioEnergie);
+                    }
 
-                    });
                 });
+            });
 
-                // Si aucun filtre sélectionné
-                if (arrayNRJ.length == 0) {
-                    // Créations d'object avec insertions des tableaux
-                    arrayNRJ = [
-                        {
-                            "name": "Thermique",
-                            "data": dataThermique,
-                            "bColor": "RGBA(84,84,84,1)",
-                            "bgColor": "RGBA(84,84,84,0.5)"
-                        },
-                        {
-                            "name": "Nucleaire",
-                            "data": dataNucleaire,
-                            "bColor": "RGBA(215,252,212,1)",
-                            "bgColor": "RGBA(215,252,212,0.5)"
-                        },
-                        {
-                            "name": "Eolien",
-                            "data": dataEolien,
-                            "bColor": "blue",
-                            "bgColor": "rgba(255, 99, 132, 0.5)"
-                        },
-                        {
-                            "name": "Solaire",
-                            "data": dataSolaire,
-                            "bColor": "yellow",
-                            "bgColor": "rgba(255, 99, 132, 0.5)"
-                        },
-                        {
-                            "name": "Hydraulique",
-                            "data": dataHydraulique,
-                            "bColor": "yellow",
-                            "bgColor": "rgba(255, 99, 132, 0.5)"
-                        },
-                        {
-                            "name": "Bioenergie",
-                            "data": dataBioenergie,
-                            "bColor": "purple",
-                            "bgColor": "rgba(255, 99, 132, 0.5)"
-                        }
-                    ];
-                }
-
-
-                // Ajout de datasets pour chaque energie avec les values 
-                arrayNRJ.forEach(energie => {
-                    addData(energie.name, energie.data, energie.bColor, energie.bgColor);
-                })
-
-                // console.log(myChart.data.datasets);
+            // Si aucun filtre sélectionné
+            if (arrayNRJ.length == 0) {
+                // Créations d'object avec insertions des tableaux
+                arrayNRJ = [
+                    {
+                        "name": "Thermique",
+                        "data": dataThermique,
+                        "bColor": "RGBA(84,84,84,1)",
+                        "bgColor": "RGBA(84,84,84,0.5)"
+                    },
+                    {
+                        "name": "Nucleaire",
+                        "data": dataNucleaire,
+                        "bColor": "RGBA(215,252,212,1)",
+                        "bgColor": "RGBA(215,252,212,0.5)"
+                    },
+                    {
+                        "name": "Eolien",
+                        "data": dataEolien,
+                        "bColor": "blue",
+                        "bgColor": "rgba(255, 99, 132, 0.5)"
+                    },
+                    {
+                        "name": "Solaire",
+                        "data": dataSolaire,
+                        "bColor": "yellow",
+                        "bgColor": "rgba(255, 99, 132, 0.5)"
+                    },
+                    {
+                        "name": "Hydraulique",
+                        "data": dataHydraulique,
+                        "bColor": "yellow",
+                        "bgColor": "rgba(255, 99, 132, 0.5)"
+                    },
+                    {
+                        "name": "Bioenergie",
+                        "data": dataBioenergie,
+                        "bColor": "purple",
+                        "bgColor": "rgba(255, 99, 132, 0.5)"
+                    }
+                ];
             }
-        });
 
+
+            // Ajout de datasets pour chaque energie avec les values 
+            arrayNRJ.forEach(energie => {
+                addData(energie.name, energie.data, energie.bColor, energie.bgColor);
+            })
+
+            // console.log(myChart.data.datasets);
+        }
     });
 
 });
@@ -150,17 +145,9 @@ function addData(newLabel, newData, newBColor, newBgColor) {
     if (myChart.data.datasets.length == 0) {
 
         // Si vide création du premier
-        createDatasets (newLabel, newData, newBColor, newBgColor);
+        createDatasets(newLabel, newData, newBColor, newBgColor);
 
     } else {
-        // console.log("==== OLD DATASET ====")
-        // console.log(myChart.data.datasets)
-        // console.log("==== OLD DATASET ====")
-
-        // console.log("==== NEW DATASET ====")
-        // console.log(newLabel)
-        // console.log(newData)
-        // console.log("==== NEW DATASET ====")
 
         // Vérification que si le newlabel n'est pas déjà présent dans tout les datatsets créés
         myChart.data.datasets.forEach(dataset => {
@@ -175,22 +162,44 @@ function addData(newLabel, newData, newBColor, newBgColor) {
 
         // Après avoir comparé le dataset que l'on veut ajouté avec tout ceux déjà créé, si la var state est à 0 donc qu'il n'est pas déjà présent, on le rajoute
         if (state == 0) {
-            createDatasets (newLabel, newData, newBColor, newBgColor);
+            createDatasets(newLabel, newData, newBColor, newBgColor);
         } else {
             // Sinon il faut l'update
+            // Recherche de l'index de l'objet à partir du nouveau label
             let index = myChart.data.datasets.map(object => object.label).indexOf(newLabel);
+
             let i = 0
             myChart.data.datasets[index].data.forEach(value => {
+                // permet de remplacer les datas d'index [i]
                 myChart.data.datasets[index].data[i] = newData[i]
                 i += 1;
             })
         }
     }
+
+    // On verifie si il y a des datasets de créer
+    if (myChart.data.datasets.length > 0) {
+        let i = 0;
+        // Pour chaque datasets
+        for (let step = 0; step < myChart.data.datasets.length; step++) {
+            // on vérifie si celui-ci est visible
+            let isDatashow = myChart.isDatasetVisible(i);
+
+            // Si il n'est pas visible on le rend visible
+            if (isDatashow === false) {
+                myChart.show(i);
+            }
+
+            // Et on incrémente i pour passer au dataset suivant ;)
+            i += 1;
+        }
+    }
+
     myChart.update();
 }
 
-
-function createDatasets (newLabel, newData, newBColor, newBgColor) {
+// fonction prenant en compte les datas et créer les permiers datasets
+function createDatasets(newLabel, newData, newBColor, newBgColor) {
     myChart.data.datasets.push({
         label: newLabel,
         data: newData,
@@ -203,13 +212,34 @@ function createDatasets (newLabel, newData, newBColor, newBgColor) {
     });
 }
 
-function removeData(chart) {
 
-    console.log(chart.data.datasets);
+// Permet de détecter le click sur tout les .filter
+$(".filter").click(function () {
 
-    // chart.data.datasets.forEach((dataset) => {
-    //     chart.data.datasets.pop()
-    // });
+    // Récupere la valeur de la checkbox cliquer
+    let value = $(this).val();
 
-    myChart.update();
-}
+    // Vérification de si la checkbox est coché
+    if (this.checked == true) {
+        // Vérifie si le dataset est déjà visible ou non
+        let isDatashow = myChart.isDatasetVisible(value);
+
+        // Si il n'est pas visible
+        if (isDatashow === true) {
+            let i = 0;
+            for (let step = 0; step < myChart.data.datasets.length; step++) {
+                myChart.hide(i);
+                i += 1;
+            }
+            // On l'affiche
+            myChart.show(value);
+        } else {
+            // Sinon on le cache
+            myChart.show(value);
+        }
+    } else {
+        // Si la checkbox n'est pas cocher on cache le dataset
+        myChart.hide(value);
+    }
+
+});
