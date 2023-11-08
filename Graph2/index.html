@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTFxz-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test chart</title>
+</head>
+
+<body>
+
+    <h1 id="titre"></h1>
+
+    <input type="checkbox"> Production ou Consommation <br> <br>
+    <input class="filter" type="checkbox" value="0" id="Thermique">Thermique <br>
+    <input class="filter" type="checkbox" value="1" id="Nucleaire">Nucléaire <br>
+    <input class="filter" type="checkbox" value="2" id="Eolien">Eolien <br>
+    <input class="filter" type="checkbox" value="3" id="Solaire">Solaire <br>
+    <input class="filter" type="checkbox" value="4" id="Hydraulique">Hydraulique <br>
+    <input class="filter" type="checkbox" value="5" id="BioEnergies">Bioénergies <br>
+
+    <canvas id="monGraphique"></canvas>
+
+    <button class="region" id="Bretagne">Bretagne</button>
+    <button class="region" id="IledeFrance">Ile-de-France</button>
+    <button class="region" id="Auvergne">Auvergne</button>
+    <button class="region" id="Bourgogne">Bourgogne</button>
+    <button class="region" id="Centre">Centre</button>
+    <button class="region" id="GrandEst">Grand-Est</button>
+    <button class="region" id="HautsdeFrance">Hauts-de-France</button>
+    <button class="region" id="Normandie">Normandie</button>
+    <button class="region" id="NouvelleAquitaine">Nouvelle-Aquitaine</button>
+    <button class="region" id="Occitanie">Occitanie</button>
+    <button class="region" id="PaysdelaLoire">Pays-de-la-Loire</button>
+    <button class="region" id="PACA">Provence-Alpes-Côte d'Azur</button>
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script type="module" src="chart.js"></script>
+
+</html>
