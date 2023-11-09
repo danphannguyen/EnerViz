@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="./src/styles.css" />
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" />
 </head>
 
 <body>
@@ -14,6 +14,20 @@
     <canvas id="canvas3d"></canvas>
     <a class="logo" href="https://spline.design"></a>
   </section>
+
+  <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling"
+    aria-controls="offcanvasScrolling">Enable body scrolling</button>
+
+  <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1"
+    id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Offcanvas with body scrolling</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <p>Try scrolling the rest of the page to see this option in action.</p>
+    </div>
+  </div>
 
   <section>
     <h1 id="titre"></h1>
@@ -27,19 +41,6 @@
     <input class="filter" type="checkbox" value="5" id="BioEnergies">Bioénergies <br>
 
     <canvas id="monGraphique"></canvas>
-
-    <button class="region" id="Bretagne">Bretagne</button>
-    <button class="region" id="IledeFrance">Ile-de-France</button>
-    <button class="region" id="Auvergne">Auvergne</button>
-    <button class="region" id="Bourgogne">Bourgogne</button>
-    <button class="region" id="Centre">Centre</button>
-    <button class="region" id="GrandEst">Grand-Est</button>
-    <button class="region" id="HautsdeFrance">Hauts-de-France</button>
-    <button class="region" id="Normandie">Normandie</button>
-    <button class="region" id="NouvelleAquitaine">Nouvelle-Aquitaine</button>
-    <button class="region" id="Occitanie">Occitanie</button>
-    <button class="region" id="PaysdelaLoire">Pays-de-la-Loire</button>
-    <button class="region" id="PACA">Provence-Alpes-Côte d'Azur</button>
   </section>
 
 </body>
@@ -55,6 +56,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.min.js"></script>
 <script type="module" src="./src/chart.js"></script>
 
 </html>

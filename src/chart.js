@@ -74,6 +74,7 @@ app.addEventListener('mouseDown', (e) => {
     // initialise la valeur de targetId
     let targetId = ""
 
+    console.log(e.target.name)
     // switch case qui permet de définir la valeur de targetId en fonction du nom de l'objet cliqué
     switch (e.target.name) {
         // ==== REGION PIN ==== //
@@ -142,6 +143,14 @@ app.addEventListener('mouseDown', (e) => {
         // let targetId = event.target.id;
 
         document.querySelector("#titre").innerHTML = targetId;
+
+        if (titleHtml != "undefined") {
+            // =================ICI DETECTER CLICK SUR REGION POUR OUVRIR BOOTSTRAP================= //
+            var offcanvasElement = document.getElementById("offcanvasScrolling");
+            var offcanvas = new bootstrap.Offcanvas(offcanvasElement);
+            offcanvas.toggle();
+        }
+
 
         // Comparaison de l'ID et de la case région de chaque object[0]
         arrayData.forEach(array => {
