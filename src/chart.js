@@ -73,46 +73,59 @@ app.addEventListener('mouseDown', (e) => {
 
     // initialise la valeur de targetId
     let targetId = ""
+    let titreHtml = ""
 
-    console.log(e.target.name)
+    // console.log(e.target.name)
     // switch case qui permet de définir la valeur de targetId en fonction du nom de l'objet cliqué
     switch (e.target.name) {
         // ==== REGION PIN ==== //
         case "Pin B":
             targetId = "Bretagne";
+            titreHtml = "Bretagne";
             break;
         case "Eiffel Tower":
             targetId = "IDF";
+            titreHtml ="Ile de France";
             break;
         case "Pin ARA":
             targetId = "Auvergne";
+            titreHtml = "Auvergne Rhône Alpes";
             break;
-        case "Pin BCF":
+        case "Pin BFC":
             targetId = "Bourgogne";
+            titreHtml = "Bourgogne Franche Comte";
             break;
         case "Pin CVL":
             targetId = "Centre";
+            titreHtml = "Centre Val de Loire";
             break;
         case "Pin GE":
             targetId = "GrandEst";
+            titreHtml = "Grand Est";
             break;
         case "Pin HF":
             targetId = "HautsdeFrance";
+            titreHtml = "Hauts de France";
             break;
         case "Pin N":
             targetId = "Normandie";
+            titreHtml = "Normandie";
             break;
         case "Pin NA":
             targetId = "NouvelleAquitaine";
+            titreHtml = "Nouvelle Aquitaine";
             break;
         case "Pin O":
             targetId = "Occitanie";
+            titreHtml = "Occitanie";
             break;
         case "Pin PL":
             targetId = "PaysdelaLoire";
+            titreHtml = "Pays de la Loire";
             break;
         case "Pin PACA":
             targetId = "PACA";
+            titreHtml = "Provence Alpes Côte d'Azur";
             break;
         // ==== REGION ZONE ==== //
         case "B":
@@ -142,10 +155,12 @@ app.addEventListener('mouseDown', (e) => {
         // // Récupération de l'id dans une variable
         // let targetId = event.target.id;
 
-        document.querySelector("#titre").innerHTML = targetId;
+        // Vérification de si titreHtml est vide ou non
+        if (titreHtml != "") {
+            // Permet de changer le titre de la modal
+            document.querySelector("#titre").innerHTML = titreHtml;
 
-        if (titleHtml != "undefined") {
-            // =================ICI DETECTER CLICK SUR REGION POUR OUVRIR BOOTSTRAP================= //
+            // Permet d'ouvrir la modal
             var offcanvasElement = document.getElementById("offcanvasScrolling");
             var offcanvas = new bootstrap.Offcanvas(offcanvasElement);
             offcanvas.toggle();

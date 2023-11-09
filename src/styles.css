@@ -6,9 +6,9 @@
   box-sizing: border-box;
 }
 
-*:focus-visible {
+/* *:focus-visible {
   outline: 2px red solid !important;
-}
+} */
 
 html {
   scroll-behavior: smooth;
