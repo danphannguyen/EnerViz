@@ -39,6 +39,10 @@ const myChart = new Chart(ctx, {
     }
 });
 
+//Légende à droite
+myChart.options.plugins.legend.position = 'right';
+myChart.update();
+
 // Initialisation de canvas Spline
 const canvas = document.getElementById('canvas3d');
 const app = new Application(canvas);
