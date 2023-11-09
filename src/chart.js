@@ -32,7 +32,7 @@ const myChart = new Chart(ctx, {
             y: {
                 type: 'logarithmic',
                 beginAtZero: true,
-                min: 10,
+                min: 1000000,
                 max: 2000000000000,
             }
         },
