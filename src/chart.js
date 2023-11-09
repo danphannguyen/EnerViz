@@ -179,38 +179,38 @@ app.addEventListener('mouseDown', (e) => {
                         {
                             "name": "Thermique",
                             "data": dataThermique,
-                            "bColor": "RGBA(84,84,84,1)",
-                            "bgColor": "RGBA(84,84,84,0.5)"
+                            "bColor": "RGB(255, 108, 0)",
+                            "bgColor": "RGB(255, 108, 0)",
                         },
                         {
                             "name": "Nucleaire",
                             "data": dataNucleaire,
-                            "bColor": "RGBA(215,252,212,1)",
-                            "bgColor": "RGBA(215,252,212,0.5)"
+                            "bColor": "RGB(147, 222, 134 )",
+                            "bgColor": "RGB(147, 222, 134 )",
                         },
                         {
                             "name": "Eolien",
                             "data": dataEolien,
-                            "bColor": "blue",
-                            "bgColor": "rgba(255, 99, 132, 0.5)"
+                            "bColor": "RGB(180, 244, 239 )",
+                            "bgColor": "RGB(180, 244, 239 )",
                         },
                         {
                             "name": "Solaire",
                             "data": dataSolaire,
-                            "bColor": "yellow",
-                            "bgColor": "rgba(255, 99, 132, 0.5)"
+                            "bColor": "rgb(255, 241, 106)",
+                            "bgColor": "rgb(255, 241, 106 )",
                         },
                         {
                             "name": "Hydraulique",
                             "data": dataHydraulique,
-                            "bColor": "yellow",
-                            "bgColor": "rgba(255, 99, 132, 0.5)"
+                            "bColor": "rgb(143, 167, 252 )",
+                            "bgColor": "rgb(143, 167, 252 )",
                         },
                         {
                             "name": "Bioenergie",
                             "data": dataBioenergie,
-                            "bColor": "purple",
-                            "bgColor": "rgba(255, 99, 132, 0.5)"
+                            "bColor": "rgb(255, 189, 235 )",
+                            "bgColor": "rgb(255, 189, 235 )",
                         }
                     ];
                 }
