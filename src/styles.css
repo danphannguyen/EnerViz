@@ -33,6 +33,15 @@ p {
   margin: 0;
 }
 
+/* font-family: 'Chillax', sans-serif;
+font-family: 'Satoshi', sans-serif; */
+
+/* ================================================= Interface ================================================= */
+
+#interface {
+  position: relative;
+}
+
 /* ================================================= Canvas ================================================= */
 
 canvas {
@@ -44,3 +53,17 @@ canvas {
 .offcanvas-backdrop.show {
   opacity: 0 !important;
 }
+
+/* ================================================= Bootstrap ================================================= */
+
+#daveContainer {
+  position: absolute;
+  left: 20px;
+  bottom: 20px;
+}
+
+#daveContainer img {
+  width: 100px;
+  height: 100px;
+}
+
