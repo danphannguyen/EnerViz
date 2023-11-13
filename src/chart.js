@@ -49,6 +49,12 @@ const myChart = new Chart(ctx, {
                 responsive: true,
             }
         },
+        plugins: {
+            title: {
+                display: true,
+                text: 'Lorem ipsum dolore'
+            }
+        },
     }
 });
 
@@ -177,11 +183,10 @@ app.addEventListener('mouseDown', (e) => {
             offcanvas.show();
         }
 
-        // ======================= Variable pour le titre du grapgique ======================
+        // Actualisation du titre du graphique
         printHtml = titreHtml
-        console.log(mode + " totale en " + printHtml);
-        // ==================================================================================
-
+        myChart.options.plugins.title.text = mode + " totale en " + printHtml;
+        
 
         // Comparaison de l'ID et de la case région de chaque object[0]
         arrayData.forEach(array => {
@@ -384,10 +389,9 @@ dataType.addEventListener('click', (e) => {
 
     if (isProd == true) {
 
-        // ======================= Actualisation titre du graphique ======================
+        // Actualisation du titre du graphique
         mode = "Production";
-        console.log(mode + " totale en " + printHtml);
-        // ==================================================================================
+        myChart.options.plugins.title.text = mode + " totale en " + printHtml;
 
         // Si production on rajoute tout les energies sauvegarder en mémoire
         arrayNRJ.forEach(energie => {
@@ -395,10 +399,9 @@ dataType.addEventListener('click', (e) => {
         })
     } else {
 
-        // ======================= Actualisation titre du graphique ======================
+        // Actualisation du titre du graphique
         mode = "Consommation";
-        console.log(mode + " totale en " + printHtml);
-        // ==================================================================================
+        myChart.options.plugins.title.text = mode + " totale en " + printHtml;
 
         // Si consommation on l'objet conso sauvegarder en mémoire
         arrayConso.forEach(conso => {
