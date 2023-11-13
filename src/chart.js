@@ -170,7 +170,7 @@ app.addEventListener('mouseDown', (e) => {
             document.querySelector("#titre").innerHTML = titreHtml;
 
             // Permet d'ouvrir la modal
-            offcanvas.toggle();
+            offcanvas.show();
         }
 
 
@@ -276,7 +276,7 @@ app.addEventListener('mouseDown', (e) => {
 
     if (targetId == "Fermeture") {
         console.log("FERMERRRR")
-        offcanvas.toggle();
+        offcanvas.hide();
     }
 
 });

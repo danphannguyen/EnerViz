@@ -43,6 +43,7 @@ font-family: 'Satoshi', sans-serif; */
 /* ================================================= Interface ================================================= */
 
 #interface {
+  height: 96vh;
   position: relative;
 }
 
@@ -97,7 +98,12 @@ canvas:hover {
   padding: 4px;
   margin-top: 16px;
 }
-/* ================================================= Bootstrap ================================================= */
+
+button .close {
+  background-color: white;
+}
+
+/* ================================================= Dave ================================================= */
 
 #daveContainer {
   position: absolute;
