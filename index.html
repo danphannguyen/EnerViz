@@ -21,9 +21,6 @@
 
   </section>
 
-  <!-- <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling"
-    aria-controls="offcanvasScrolling">Enable body scrolling
-  </button> --> <!-- ici bouton ouverture window -->
 
   <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1"
     id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
@@ -34,9 +31,15 @@
 
     </div>
     <div class="offcanvas-body">
-      <h1 id="titre"></h1>
-  
-      <canvas id="monGraphique"></canvas>
+
+      <div class="title-pop-up">
+        <h1 id="titre"></h1>
+      </div>
+
+      <div class="graph-container">
+        <h2 id="label"></h2>
+        <canvas id="monGraphique"></canvas>
+      </div>
     </div>
 
   </div>

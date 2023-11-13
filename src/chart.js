@@ -94,7 +94,7 @@ app.addEventListener('mouseDown', (e) => {
             break;
         case "Pin BFC":
             targetId = "Bourgogne";
-            titreHtml = "Bourgogne Franche Comte";
+            titreHtml = "Bourgogne-Franche-Comté";
             break;
         case "Pin CVL":
             targetId = "Centre";
@@ -166,6 +166,8 @@ app.addEventListener('mouseDown', (e) => {
             var offcanvas = new bootstrap.Offcanvas(offcanvasElement);
             offcanvas.toggle();
         }
+
+        
 
 
         // Comparaison de l'ID et de la case région de chaque object[0]
@@ -331,19 +333,20 @@ function createDatasets(newLabel, newData, newBColor, newBgColor) {
     myChart.data.datasets.push({
         label: newLabel,
         data: newData,
-        borderWidth: 1,
+        borderWidth: 1.5,
         borderColor: newBColor,
         backgroundColor: newBgColor,
         pointStyle: 'circle',
-        pointRadius: 2,
-        pointHoverRadius: 4,
+        pointRadius: 3,
+        pointHoverRadius: 8,
     });
 }
 
 /* 
-LEANA: CE QUE J'AI FAIT DANS MON TEST POUR LE CHANGER SWITCH ENTRE GRAPH CONS ET GRAPH PROD */
-//Fonction pour changer de graphique entre conso et prod
+LEANA: CE QUE J'AI FAIT DANS MON TEST POUR LE CHANGER SWITCH ENTRE GRAPH CONS ET GRAPH PROD
+ */
 
+//Fonction pour changer de graphique entre conso et prod
 /* function changeGlobalData(data, chart) {
     GLOBAL_DATA = data
     //On vide les tableaux
@@ -364,7 +367,7 @@ changeGlobalData(Bretagne, chart) */
 
 
 /* 
-CHANGEMENT DU BOUTON EN PROD ET CONSO 
+CHANGEMENT DU BOUTON EN PROD ET CONSO (a mettre au dessus du script)
 */
 let dataType = document.querySelector('.choice');
 let isProd = true;
@@ -380,34 +383,3 @@ dataType.addEventListener('click', (e) => {
 
 
 
-/* 
-CE QUE DAN A FAIT
- */
-
-// Permet de détecter le click sur tout les .filter
-/* $(".filter").click(function () {
-
-    // Vérification de si la checkbox est coché
-    if (this.checked == true) {
-        // Vérifie si le dataset est déjà visible ou non
-        let isDatashow = myChart.isDatasetVisible(value);
-
-        // Si il n'est pas visible
-        if (isDatashow === true) {
-            let i = 0;
-            for (let step = 0; step < myChart.data.datasets.length; step++) {
-                myChart.hide(i);
-                i += 1;
-            }
-            // On l'affiche
-            myChart.show(value);
-        } else {
-            // Sinon on le cache
-            myChart.show(value);
-        }
-    } else {
-        // Si la checkbox n'est pas cocher on cache le dataset
-        myChart.hide(value);
-    }
-
-}); */

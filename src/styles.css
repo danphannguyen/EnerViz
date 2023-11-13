@@ -33,6 +33,10 @@ p {
   margin: 0;
 }
 
+h1 {
+  font-size: 1.6rem !important;
+}
+
 /* font-family: 'Chillax', sans-serif;
 font-family: 'Satoshi', sans-serif; */
 
@@ -48,6 +52,7 @@ canvas {
   display: block;
 }
 
+
 canvas:hover {
   cursor: pointer !important;
 }
@@ -58,6 +63,40 @@ canvas:hover {
   opacity: 0 !important;
 }
 
+.offcanvas {
+  background-color: rgba(255,255,255,0.8) !important;
+  border-radius: 30px 1px 1px 30px;
+  padding: 20px 10px;
+}
+
+ .title-pop-up{
+  background-color: white;
+  display: flex !important;
+  justify-content: center !important;
+  padding: 7px;
+  border-radius: 18px;
+}
+
+.choice {
+  padding: 10px;
+  border: none;
+  border-radius: 30px;
+  background-color: rgba(255,80,80,0.8);
+  color: white;
+  transition: 0.4s;
+}
+
+.choice:hover {
+  padding: 12px;
+  background-color:rgba(255,80,80,1);
+}
+
+.graph-container {
+  background-color: white;
+  border-radius: 18px;
+  padding: 4px;
+  margin-top: 16px;
+}
 /* ================================================= Bootstrap ================================================= */
 
 #daveContainer {
