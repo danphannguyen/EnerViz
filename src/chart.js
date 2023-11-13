@@ -27,6 +27,10 @@ let arrayConso = []
 var offcanvasElement = document.getElementById("offcanvasScrolling");
 var offcanvas = new bootstrap.Offcanvas(offcanvasElement);
 
+// Initailisation du mode pour changement du titre
+let mode = "Production";
+let printHtml = ""
+
 // Initalisation du graphique
 const ctx = document.getElementById('monGraphique').getContext('2d');
 const myChart = new Chart(ctx, {
@@ -173,6 +177,11 @@ app.addEventListener('mouseDown', (e) => {
             offcanvas.show();
         }
 
+        // ======================= Variable pour le titre du grapgique ======================
+        printHtml = titreHtml
+        console.log(mode + " totale en " + printHtml);
+        // ==================================================================================
+
 
         // Comparaison de l'ID et de la case région de chaque object[0]
         arrayData.forEach(array => {
@@ -277,7 +286,6 @@ app.addEventListener('mouseDown', (e) => {
 
     // Si target = fermeture on cache le offcanvas
     if (targetId == "Fermeture") {
-        console.log("FERMERRRR")
         offcanvas.hide();
     }
 
@@ -375,11 +383,23 @@ dataType.addEventListener('click', (e) => {
     myChart.data.datasets = [];
 
     if (isProd == true) {
+
+        // ======================= Actualisation titre du graphique ======================
+        mode = "Production";
+        console.log(mode + " totale en " + printHtml);
+        // ==================================================================================
+
         // Si production on rajoute tout les energies sauvegarder en mémoire
         arrayNRJ.forEach(energie => {
             addData(energie.name, energie.data, energie.bColor, energie.bgColor);
         })
     } else {
+
+        // ======================= Actualisation titre du graphique ======================
+        mode = "Consommation";
+        console.log(mode + " totale en " + printHtml);
+        // ==================================================================================
+
         // Si consommation on l'objet conso sauvegarder en mémoire
         arrayConso.forEach(conso => {
             addData(conso.name, conso.data, conso.bColor, conso.bgColor);
