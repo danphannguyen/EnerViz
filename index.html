@@ -12,7 +12,7 @@
 <body>
 
   <section id="interface">
-    <canvas id="canvas3d"></canvas>
+    <canvas id="canvas3d" height="180"></canvas>
     <a class="logo" href="https://spline.design"></a>
 
     <div id="daveContainer">
@@ -21,24 +21,28 @@
 
   </section>
 
-  <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling"
-    aria-controls="offcanvasScrolling">Enable body scrolling</button> <!-- ici bouton ouverture window -->
+  <!-- <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling"
+    aria-controls="offcanvasScrolling">Enable body scrolling
+  </button> --> <!-- ici bouton ouverture window -->
 
   <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1"
     id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+    
     <div class="offcanvas-header">
-      <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Offcanvas with body scrolling</h5>
+      <button class="choice">Production</button>
       <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+
     </div>
     <div class="offcanvas-body">
-      <p>Try scrolling the rest of the page to see this option in action.</p>
+      <h1 id="titre"></h1>
+  
+      <canvas id="monGraphique"></canvas>
     </div>
+
   </div>
 
-  <section>
-    <h1 id="titre"></h1>
+  <!-- <section>
 
-    <input type="checkbox"> Production ou Consommation <br> <br>
     <input class="filter" type="checkbox" value="0" id="Thermique">Thermique <br>
     <input class="filter" type="checkbox" value="1" id="Nucleaire">Nucléaire <br>
     <input class="filter" type="checkbox" value="2" id="Eolien">Eolien <br>
@@ -46,8 +50,8 @@
     <input class="filter" type="checkbox" value="4" id="Hydraulique">Hydraulique <br>
     <input class="filter" type="checkbox" value="5" id="BioEnergies">Bioénergies <br>
 
-    <canvas id="monGraphique"></canvas>
-  </section>
+    
+  </section> -->
 
 </body>
 

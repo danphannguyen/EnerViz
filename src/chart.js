@@ -34,13 +34,14 @@ const myChart = new Chart(ctx, {
                 beginAtZero: true,
                 min: 1000000,
                 max: 2000000000000,
+                responsive: true,
             }
         },
     }
 });
 
 //Légende à droite
-myChart.options.plugins.legend.position = 'right';
+myChart.options.plugins.legend.position = 'bottom';
 myChart.update();
 
 // Initialisation de canvas Spline
@@ -334,17 +335,57 @@ function createDatasets(newLabel, newData, newBColor, newBgColor) {
         borderColor: newBColor,
         backgroundColor: newBgColor,
         pointStyle: 'circle',
-        pointRadius: 7.5,
-        pointHoverRadius: 10,
+        pointRadius: 2,
+        pointHoverRadius: 4,
     });
 }
 
+/* 
+LEANA: CE QUE J'AI FAIT DANS MON TEST POUR LE CHANGER SWITCH ENTRE GRAPH CONS ET GRAPH PROD */
+//Fonction pour changer de graphique entre conso et prod
+
+/* function changeGlobalData(data, chart) {
+    GLOBAL_DATA = data
+    //On vide les tableaux
+    conso = []
+    prod = []
+
+    //selectionne les données et les push dans mes tableaux
+    GLOBAL_DATA.Evolution.forEach((element) => {
+        conso.push(element.consommation_globale);
+        prod.push(element.production_globale);
+    });
+
+    updateChart(chart);
+}
+
+changeGlobalData(Bretagne, chart) */
+
+
+
+/* 
+CHANGEMENT DU BOUTON EN PROD ET CONSO 
+*/
+let dataType = document.querySelector('.choice');
+let isProd = true;
+
+//Changement du bouton en fonction du type de data
+dataType.addEventListener('click', (e) => {
+    isProd = !isProd;
+    //! pour dire qu'il est false donc je suis en mode consommation
+
+    //Changement du bouton 
+    document.querySelector('.choice').textContent = isProd ? 'Production' : 'Consommation';
+});
+
+
+
+/* 
+CE QUE DAN A FAIT
+ */
 
 // Permet de détecter le click sur tout les .filter
-$(".filter").click(function () {
-
-    // Récupere la valeur de la checkbox cliquer
-    let value = $(this).val();
+/* $(".filter").click(function () {
 
     // Vérification de si la checkbox est coché
     if (this.checked == true) {
@@ -369,4 +410,4 @@ $(".filter").click(function () {
         myChart.hide(value);
     }
 
-});
+}); */
