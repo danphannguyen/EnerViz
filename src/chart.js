@@ -19,6 +19,10 @@ let arrayData = [Bretagne, IDF, Auvergne, Bourgogne, Centre, GrandEst, HautsDeFr
 // Permet de spécifier les années que l'on cherche ! 
 let arrayAnnees = ['2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021'];
 
+// Permet de Garder en mémoire les énergies pour le prod / conso
+let arrayNRJ = []
+let arrayConso = []
+
 // Initalisation du graphique
 const ctx = document.getElementById('monGraphique').getContext('2d');
 const myChart = new Chart(ctx, {
@@ -86,7 +90,7 @@ app.addEventListener('mouseDown', (e) => {
             break;
         case "Eiffel Tower":
             targetId = "IDF";
-            titreHtml ="Ile de France";
+            titreHtml = "Ile de France";
             break;
         case "Pin ARA":
             targetId = "Auvergne";
@@ -167,8 +171,6 @@ app.addEventListener('mouseDown', (e) => {
             offcanvas.toggle();
         }
 
-        
-
 
         // Comparaison de l'ID et de la case région de chaque object[0]
         arrayData.forEach(array => {
@@ -181,8 +183,9 @@ app.addEventListener('mouseDown', (e) => {
                 let dataSolaire = [];
                 let dataHydraulique = [];
                 let dataBioenergie = [];
-                // Permet de lister toutes les Energies que l'on cherche
-                let arrayNRJ = []
+                let dataConso = [];
+                arrayNRJ = []
+                arrayConso = []
 
                 // Parcours de tout les éléments contenu dans le JSON sélectionné
                 array.forEach((element) => {
@@ -198,10 +201,20 @@ app.addEventListener('mouseDown', (e) => {
                             dataSolaire.push(element.Solaire);
                             dataHydraulique.push(element.Hydraulique);
                             dataBioenergie.push(element.BioEnergie);
+                            dataConso.push(element.Consommation)
                         }
 
                     });
                 });
+
+                arrayConso = [
+                    {
+                        "name": "Consommation Globale",
+                        "data": dataConso,
+                        "bColor": "RGB(255, 108, 0)",
+                        "bgColor": "RGB(255, 108, 0)",
+                    },
+                ]
 
                 // Si aucun filtre sélectionné
                 if (arrayNRJ.length == 0) {
@@ -251,7 +264,6 @@ app.addEventListener('mouseDown', (e) => {
                 arrayNRJ.forEach(energie => {
                     addData(energie.name, energie.data, energie.bColor, energie.bgColor);
                 })
-
                 // console.log(myChart.data.datasets);
             }
         });
@@ -261,9 +273,6 @@ app.addEventListener('mouseDown', (e) => {
     // ICI FAIRE LE CAS "undefined" et "Fermeture"
 
 });
-
-
-
 
 
 function addData(newLabel, newData, newBColor, newBgColor) {
@@ -378,7 +387,21 @@ dataType.addEventListener('click', (e) => {
     //! pour dire qu'il est false donc je suis en mode consommation
 
     //Changement du bouton 
-    document.querySelector('.choice').textContent = isProd ? 'Production' : 'Consommation';
+    dataType.textContent = isProd ? 'Production' : 'Consommation';
+
+    myChart.data.datasets = [];
+
+    if (isProd == true) {
+        arrayNRJ.forEach(energie => {
+            addData(energie.name, energie.data, energie.bColor, energie.bgColor);
+        })
+    } else {
+        arrayConso.forEach(conso => {
+            addData(conso.name, conso.data, conso.bColor, conso.bgColor);
+        })
+    }
+
+    myChart.update();
 });
 
 
