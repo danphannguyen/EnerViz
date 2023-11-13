@@ -209,6 +209,7 @@ app.addEventListener('mouseDown', (e) => {
                     });
                 });
 
+                // Permet de sauvegarder dans un object les valeurs conso
                 arrayConso = [
                     {
                         "name": "Consommation Globale",
@@ -274,6 +275,7 @@ app.addEventListener('mouseDown', (e) => {
 
     // ICI FAIRE LE CAS "undefined" et "Fermeture"
 
+    // Si target = fermeture on cache le offcanvas
     if (targetId == "Fermeture") {
         console.log("FERMERRRR")
         offcanvas.hide();
@@ -358,33 +360,6 @@ function createDatasets(newLabel, newData, newBColor, newBgColor) {
     });
 }
 
-/* 
-LEANA: CE QUE J'AI FAIT DANS MON TEST POUR LE CHANGER SWITCH ENTRE GRAPH CONS ET GRAPH PROD
- */
-
-//Fonction pour changer de graphique entre conso et prod
-/* function changeGlobalData(data, chart) {
-    GLOBAL_DATA = data
-    //On vide les tableaux
-    conso = []
-    prod = []
-
-    //selectionne les données et les push dans mes tableaux
-    GLOBAL_DATA.Evolution.forEach((element) => {
-        conso.push(element.consommation_globale);
-        prod.push(element.production_globale);
-    });
-
-    updateChart(chart);
-}
-
-changeGlobalData(Bretagne, chart) */
-
-
-
-/* 
-CHANGEMENT DU BOUTON EN PROD ET CONSO (a mettre au dessus du script)
-*/
 let dataType = document.querySelector('.choice');
 let isProd = true;
 
@@ -396,13 +371,16 @@ dataType.addEventListener('click', (e) => {
     //Changement du bouton 
     dataType.textContent = isProd ? 'Production' : 'Consommation';
 
+    // On vide le dataset par précaution
     myChart.data.datasets = [];
 
     if (isProd == true) {
+        // Si production on rajoute tout les energies sauvegarder en mémoire
         arrayNRJ.forEach(energie => {
             addData(energie.name, energie.data, energie.bColor, energie.bgColor);
         })
     } else {
+        // Si consommation on l'objet conso sauvegarder en mémoire
         arrayConso.forEach(conso => {
             addData(conso.name, conso.data, conso.bColor, conso.bgColor);
         })
