@@ -23,6 +23,10 @@ let arrayAnnees = ['2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020
 let arrayNRJ = []
 let arrayConso = []
 
+// Initialise une instance du offCanvas Bootstrap
+var offcanvasElement = document.getElementById("offcanvasScrolling");
+var offcanvas = new bootstrap.Offcanvas(offcanvasElement);
+
 // Initalisation du graphique
 const ctx = document.getElementById('monGraphique').getContext('2d');
 const myChart = new Chart(ctx, {
@@ -166,8 +170,6 @@ app.addEventListener('mouseDown', (e) => {
             document.querySelector("#titre").innerHTML = titreHtml;
 
             // Permet d'ouvrir la modal
-            var offcanvasElement = document.getElementById("offcanvasScrolling");
-            var offcanvas = new bootstrap.Offcanvas(offcanvasElement);
             offcanvas.toggle();
         }
 
@@ -271,6 +273,11 @@ app.addEventListener('mouseDown', (e) => {
     };
 
     // ICI FAIRE LE CAS "undefined" et "Fermeture"
+
+    if (targetId == "Fermeture") {
+        console.log("FERMERRRR")
+        offcanvas.toggle();
+    }
 
 });
 

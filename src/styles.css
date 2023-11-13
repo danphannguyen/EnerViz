@@ -60,7 +60,7 @@ canvas:hover {
 /* ================================================= Bootstrap ================================================= */
 
 .offcanvas-backdrop.show {
-  opacity: 0 !important;
+  display: none;
 }
 
 .offcanvas {
