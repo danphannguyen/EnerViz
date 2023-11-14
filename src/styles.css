@@ -102,7 +102,7 @@ footer a {
 /* ================================================= Bootstrap ================================================= */
 
 .offcanvas-backdrop.show {
-  display: none;
+  display: none !important;
 }
 
 .offcanvas {
@@ -178,10 +178,25 @@ input[type="checkbox"].filter:checked+.labelFilter {
 
 /* ================================================= Dave ================================================= */
 
+.show {
+  display: block !important;
+}
+
 #daveContainer {
   position: absolute;
   left: 20px;
   bottom: 40px;
+  display: flex;
+  align-items: center;
+}
+
+#daveContainer span {
+  width: 800px;
+  padding: 20px;
+  border-radius: 16px;
+  border: 2px solid black;
+  background-color: white;
+  display: none;
 }
 
 #daveContainer img {
