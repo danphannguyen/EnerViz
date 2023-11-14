@@ -23,6 +23,20 @@ body::-webkit-scrollbar{
   display: none;
 }
 
+/*=================================================== Loader ===================================================== */
+
+#loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.spinner-border {
+  width: 10rem;
+  height: 10rem;
+}
+
 h1,
 h2,
 h3,
@@ -59,7 +73,7 @@ canvas {
 footer {
   position: fixed;
   font-weight: bold;
-  top: 96.5vh;
+  top: 96.1vh;
   width: 100%;
   font-size: large;
   background-color: rgba(0, 0, 0, 0.322);

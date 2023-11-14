@@ -62,6 +62,13 @@ const myChart = new Chart(ctx, {
 myChart.options.plugins.legend.position = 'bottom';
 myChart.update();
 
+//Fonction pour initialiser le loader en fonction d'un temps donner
+window.addEventListener('load', function() {
+    setTimeout(function() {
+      document.getElementById('loader').style.display = 'none';
+    }, 10000);
+  });
+  
 // Initialisation de canvas Spline
 const canvas = document.getElementById('canvas3d');
 const app = new Application(canvas);
@@ -411,6 +418,4 @@ dataType.addEventListener('click', (e) => {
 
     myChart.update();
 });
-
-
 
