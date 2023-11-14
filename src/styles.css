@@ -54,9 +54,24 @@ canvas {
 }
 
 
-canvas:hover {
-  cursor: pointer !important;
+/* ================================================= Footer ================================================= */
+
+footer {
+  position: fixed;
+  font-weight: bold;
+  top: 96.5vh;
+  width: 100%;
+  font-size: large;
+  background-color: rgba(0, 0, 0, 0.322);
+  text-align: center;
+  z-index: 1;
 }
+
+footer a {
+  color: white;
+  text-decoration: none;
+}
+
 
 /* ================================================= Bootstrap ================================================= */
 
