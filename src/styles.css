@@ -19,7 +19,7 @@ body {
   padding: 0;
 }
 
-body::-webkit-scrollbar{
+body::-webkit-scrollbar {
   display: none;
 }
 
@@ -72,6 +72,12 @@ canvas {
 .spinner-border {
   width: 10rem !important;
   height: 10rem !important;
+  border-color: white !important;
+  border-right: transparent !important;
+}
+
+#loader {
+  background-color: rgb(131,192,109);
 }
 
 /* ================================================= Footer ================================================= */
@@ -100,12 +106,12 @@ footer a {
 }
 
 .offcanvas {
-  background-color: rgba(255,255,255,0.8) !important;
+  background-color: rgba(255, 255, 255, 0.8) !important;
   border-radius: 30px 1px 1px 30px;
   padding: 20px 10px;
 }
 
- .title-pop-up{
+.title-pop-up {
   background-color: white;
   display: flex !important;
   justify-content: center !important;
@@ -117,14 +123,14 @@ footer a {
   padding: 10px;
   border: none;
   border-radius: 30px;
-  background-color: rgba(255,80,80,0.8);
+  background-color: rgba(255, 80, 80, 0.8);
   color: white;
   transition: 0.4s;
 }
 
 .choice:hover {
   padding: 12px;
-  background-color:rgba(255,80,80,1);
+  background-color: rgba(255, 80, 80, 1);
 }
 
 .graph-container {
@@ -137,6 +143,7 @@ footer a {
 button .close {
   background-color: white;
 }
+
 /* ================================================= Filter ================================================= */
 
 #filterContainer {
@@ -154,16 +161,18 @@ button .close {
 
 .labelFilter {
   display: inline-block;
-  background-color: rgba(255,255,255,0.4);
+  background-color: rgba(255, 255, 255, 0.4);
   border-radius: 20px;
+  cursor: pointer;
 }
 
 #filterContainer label img {
   height: 60px;
 }
 
-input[type="checkbox"].filter:checked + .labelFilter {
-  background-color: #00ff00;
+input[type="checkbox"].filter:checked+.labelFilter {
+  background-color: rgba(72, 72, 72, 0.4);
+  opacity: 0.75;
 }
 
 
@@ -179,4 +188,3 @@ input[type="checkbox"].filter:checked + .labelFilter {
   width: 100px;
   height: 100px;
 }
-

@@ -63,12 +63,12 @@ myChart.options.plugins.legend.position = 'bottom';
 myChart.update();
 
 //Fonction pour initialiser le loader en fonction d'un temps donner
-window.addEventListener('load', function() {
-    setTimeout(function() {
-      document.getElementById('loader').style.display = 'none';
+window.addEventListener('load', function () {
+    setTimeout(function () {
+        document.getElementById('loader').style.display = 'none';
     }, 10000);
-  });
-  
+});
+
 // Initialisation de canvas Spline
 const canvas = document.getElementById('canvas3d');
 const app = new Application(canvas);
@@ -425,27 +425,32 @@ $(".filter").click(function () {
     // Récupere la valeur de la checkbox cliquer
     let value = $(this).val();
 
-    // Vérification de si la checkbox est coché
-    if (this.checked == true) {
-        // Vérifie si le dataset est déjà visible ou non
-        let isDatashow = myChart.isDatasetVisible(value);
+    try {
+        // Vérification de si la checkbox est coché
+        if (this.checked == true) {
+            // Vérifie si le dataset est déjà visible ou non
+            let isDatashow = myChart.isDatasetVisible(value);
 
-        // Si il n'est pas visible
-        if (isDatashow === true) {
-            let i = 0;
-            for (let step = 0; step < myChart.data.datasets.length; step++) {
-                myChart.hide(i);
-                i += 1;
+            // Si il n'est pas visible
+            if (isDatashow === true) {
+                let i = 0;
+                for (let step = 0; step < myChart.data.datasets.length; step++) {
+                    myChart.hide(i);
+                    i += 1;
+                }
+                // On l'affiche
+                myChart.show(value);
+            } else {
+                // Sinon on le cache
+                myChart.show(value);
             }
-            // On l'affiche
-            myChart.show(value);
         } else {
-            // Sinon on le cache
-            myChart.show(value);
+            // Si la checkbox n'est pas cocher on cache le dataset
+            myChart.hide(value);
         }
-    } else {
-        // Si la checkbox n'est pas cocher on cache le dataset
-        myChart.hide(value);
+    } catch (error) {
+        console.log("Merci de d'abord selectionné une région !");
+
     }
 
 });
