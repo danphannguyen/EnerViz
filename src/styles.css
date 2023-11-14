@@ -57,7 +57,7 @@ font-family: 'Satoshi', sans-serif; */
 /* ================================================= Interface ================================================= */
 
 #interface {
-  height: 96vh;
+  height: 100vh;
   position: relative;
 }
 
@@ -67,13 +67,19 @@ canvas {
   display: block;
 }
 
+/* ================================================= Loader ================================================= */
+
+.spinner-border {
+  width: 10rem !important;
+  height: 10rem !important;
+}
 
 /* ================================================= Footer ================================================= */
 
 footer {
   position: fixed;
   font-weight: bold;
-  top: 96.1vh;
+  bottom: 0;
   width: 100%;
   font-size: large;
   background-color: rgba(0, 0, 0, 0.322);
@@ -135,7 +141,7 @@ button .close {
 
 #filterContainer {
   position: absolute;
-  left: 20px;
+  left: 40px;
   top: 20px;
   display: flex;
   flex-direction: column;
@@ -146,12 +152,27 @@ button .close {
   display: none;
 }
 
+.labelFilter {
+  display: inline-block;
+  background-color: rgba(255,255,255,0.4);
+  border-radius: 20px;
+}
+
+#filterContainer label img {
+  height: 60px;
+}
+
+input[type="checkbox"].filter:checked + .labelFilter {
+  background-color: #00ff00;
+}
+
+
 /* ================================================= Dave ================================================= */
 
 #daveContainer {
   position: absolute;
   left: 20px;
-  bottom: 20px;
+  bottom: 40px;
 }
 
 #daveContainer img {

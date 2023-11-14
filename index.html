@@ -6,7 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="./src/styles.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" />
-  <link href="https://api.fontshare.com/v2/css?f[]=chillax@1,600,500,300,700,400,200&f[]=satoshi@1,900,700,500,301,701,300,501,401,901,400,2&display=swap" rel="stylesheet">
+  <link
+    href="https://api.fontshare.com/v2/css?f[]=chillax@1,600,500,300,700,400,200&f[]=satoshi@1,900,700,500,301,701,300,501,401,901,400,2&display=swap"
+    rel="stylesheet">
 </head>
 
 <body>
@@ -26,47 +28,46 @@
 
     <div id="filterContainer">
       <div>
-        <label for="Thermique">Thermique</label>
         <input class="filter" type="checkbox" value="0" id="Thermique">
+        <label class="labelFilter" for="Thermique"><img src="./img/THERM.svg" alt=""></label>
       </div>
 
       <div>
-        <label for="Nucleaire">Nucléaire</label>
         <input class="filter" type="checkbox" value="1" id="Nucleaire">
+        <label class="labelFilter" for="Nucleaire"><img src="./img/NUC.svg" alt=""></label>
       </div>
 
       <div>
-        <label for="Eolien">Eolien</label>
         <input class="filter" type="checkbox" value="2" id="Eolien">
+        <label class="labelFilter" for="Eolien"><img src="./img/EOL.svg" alt=""></label>
       </div>
 
       <div>
-        <label for="Solaire">Solaire</label>
         <input class="filter" type="checkbox" value="3" id="Solaire">
+        <label class="labelFilter" for="Solaire"><img src="./img/SOL.svg" alt=""></label>
       </div>
 
       <div>
-        <label for="Hydraulique">Hydraulique</label>
         <input class="filter" type="checkbox" value="4" id="Hydraulique">
+        <label class="labelFilter" for="Hydraulique"><img src="./img/HYDRAU.svg" alt=""></label>
       </div>
-      
+
       <div>
-        <label for="BioEnergies">BioEnergies</label>
         <input class="filter" type="checkbox" value="5" id="BioEnergies">
+        <label class="labelFilter" for="BioEnergies"><img src="./img/BIO.svg" alt=""></label>
       </div>
     </div>
 
   </section>
 
 
-  <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1"
-    id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
-    
+  <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasScrolling"
+    aria-labelledby="offcanvasScrollingLabel">
+
     <div class="offcanvas-header">
       <button class="choice">Production</button>
-      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-
     </div>
+
     <div class="offcanvas-body">
 
       <div class="title-pop-up">
@@ -84,11 +85,12 @@
   <footer>
     <a>© 2023-2024 DataViz' |</a>
     <a href="#" data-bs-toggle="modal" data-bs-target="#mentionsLegalesModal">Mentions légales</a>
-  </footer>  
+  </footer>
 
-  <div class="modal fade" id="mentionsLegalesModal" tabindex="-1" aria-labelledby="mentionsLegalesModalLabel" aria-hidden="true">
+  <div class="modal fade" id="mentionsLegalesModal" tabindex="-1" aria-labelledby="mentionsLegalesModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
-      
+
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="mentionsLegalesModalLabel">Mentions légales</h5>
@@ -104,7 +106,10 @@
           <a href="https://www.o2switch.fr">O2Switch</a>
           <hr>
           <h5>Sources des données</h5>
-          <p>Toutes les informations utilisés et traités sur le site sot de la propriétét de RTE et sont utilisés dans un buy informatif et pédagogiques et n'est ici utilisés que dans le cadre d'un projet étudiant. Les données proviennent du site <a href="www.ret-france.com">RTE France</a> et de la <a href="www.data.gouv.fr">plateforme de diffusion de données publiques de l'Etat français</a></p>
+          <p>Toutes les informations utilisés et traités sur le site sot de la propriétét de RTE et sont utilisés dans
+            un buy informatif et pédagogiques et n'est ici utilisés que dans le cadre d'un projet étudiant. Les données
+            proviennent du site <a href="www.ret-france.com">RTE France</a> et de la <a
+              href="www.data.gouv.fr">plateforme de diffusion de données publiques de l'Etat français</a></p>
         </div>
       </div>
     </div>
