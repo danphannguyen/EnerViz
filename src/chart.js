@@ -193,7 +193,7 @@ app.addEventListener('mouseDown', (e) => {
         // Actualisation du titre du graphique
         printHtml = titreHtml
         myChart.options.plugins.title.text = mode + " totale en " + printHtml;
-        
+
 
         // Comparaison de l'ID et de la case région de chaque object[0]
         arrayData.forEach(array => {
@@ -419,3 +419,33 @@ dataType.addEventListener('click', (e) => {
     myChart.update();
 });
 
+// Permet de détecter le click sur tout les .filter
+$(".filter").click(function () {
+
+    // Récupere la valeur de la checkbox cliquer
+    let value = $(this).val();
+
+    // Vérification de si la checkbox est coché
+    if (this.checked == true) {
+        // Vérifie si le dataset est déjà visible ou non
+        let isDatashow = myChart.isDatasetVisible(value);
+
+        // Si il n'est pas visible
+        if (isDatashow === true) {
+            let i = 0;
+            for (let step = 0; step < myChart.data.datasets.length; step++) {
+                myChart.hide(i);
+                i += 1;
+            }
+            // On l'affiche
+            myChart.show(value);
+        } else {
+            // Sinon on le cache
+            myChart.show(value);
+        }
+    } else {
+        // Si la checkbox n'est pas cocher on cache le dataset
+        myChart.hide(value);
+    }
+
+});

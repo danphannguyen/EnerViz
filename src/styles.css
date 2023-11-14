@@ -133,8 +133,17 @@ button .close {
 }
 /* ================================================= Filter ================================================= */
 
+#filterContainer {
+  position: absolute;
+  left: 20px;
+  top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
 #filterContainer input {
-  /* opacity: 0; */
+  display: none;
 }
 
 /* ================================================= Dave ================================================= */
