@@ -300,6 +300,10 @@ app.addEventListener('mouseDown', (e) => {
 
     // Si target = fermeture on cache le offcanvas
     if (targetId == "Fermeture") {
+        
+        isProd = true;
+        dataType.textContent = isProd ? 'Production' : 'Consommation';
+
         $(".filter").prop("checked", false);
         offcanvas.hide();
     }
@@ -430,7 +434,11 @@ $(".filter").click(function () {
     let value = $(this).val();
 
     try {
-        $("#daveText").removeClass("show");
+
+        if ($("#offcanvasScrolling").hasClass("show")) {
+            $("#daveText").removeClass("show");
+        }
+
         // Vérification de si la checkbox est coché
         if (this.checked == true) {
             // Vérifie si le dataset est déjà visible ou non
@@ -455,9 +463,14 @@ $(".filter").click(function () {
         }
 
     } catch (error) {
-        // $("#daveText").toggleClass("d-none");
-        $("#daveText").addClass("show");
-        $("#daveText").text("Merci de d'abord selectionner une région! Pour cela clique sur un des pins de la carte");
+
+        if ( $("#offcanvasScrolling").hasClass("show") ) {
+            $("#daveText").addClass("show");
+            $("#daveText").text("Le mode consommation ne contient pas de filtre !");
+        } else {
+            $("#daveText").addClass("show");
+            $("#daveText").text("Merci de d'abord selectionner une région! Pour cela clique sur un des pins de la carte");
+        }
     }
 
 });

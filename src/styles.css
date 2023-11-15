@@ -191,7 +191,6 @@ input[type="checkbox"].filter:checked+.labelFilter {
 }
 
 #daveContainer span {
-  width: 800px;
   padding: 20px;
   border-radius: 16px;
   border: 2px solid black;
