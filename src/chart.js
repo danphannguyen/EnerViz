@@ -178,6 +178,7 @@ app.addEventListener('mouseDown', (e) => {
     // AddEventlistener 'click' sur chaque boutons
     if (targetId != "undefined" || targetId != "Fermeture") {
 
+        $("#daveText").removeClass("show");
         // // Récupération de l'id dans une variable
         // let targetId = event.target.id;
 
