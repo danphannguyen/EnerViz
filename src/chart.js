@@ -300,12 +300,23 @@ app.addEventListener('mouseDown', (e) => {
 
     // Si target = fermeture on cache le offcanvas
     if (targetId == "Fermeture") {
-        
+
         isProd = true;
         dataType.textContent = isProd ? 'Production' : 'Consommation';
+        myChart.data.datasets = [];
+
+        // Actualisation du titre du graphique
+        mode = "Production";
+        myChart.options.plugins.title.text = mode + " totale en " + printHtml;
+
+        // Si production on rajoute tout les energies sauvegarder en mémoire
+        arrayNRJ.forEach(energie => {
+            addData(energie.name, energie.data, energie.bColor, energie.bgColor);
+        })
 
         $(".filter").prop("checked", false);
         offcanvas.hide();
+        myChart.update();
     }
 
 });
@@ -411,6 +422,8 @@ dataType.addEventListener('click', (e) => {
         arrayNRJ.forEach(energie => {
             addData(energie.name, energie.data, energie.bColor, energie.bgColor);
         })
+
+        $(".choice").css("background-color", "rgba(255, 80, 80, 1)");
     } else {
 
         // Actualisation du titre du graphique
@@ -421,6 +434,8 @@ dataType.addEventListener('click', (e) => {
         arrayConso.forEach(conso => {
             addData(conso.name, conso.data, conso.bColor, conso.bgColor);
         })
+
+        $(".choice").css("background-color", "#7692FF");
     }
 
     $(".filter").prop("checked", false);
@@ -435,8 +450,9 @@ $(".filter").click(function () {
 
     try {
 
-        if ($("#offcanvasScrolling").hasClass("show")) {
-            $("#daveText").removeClass("show");
+        if ($("#offcanvasScrolling").hasClass("show") == false) {
+            $("#daveText").addClass("show");
+            $("#daveText").text("Merci de d'abord selectionner une région! Pour cela clique sur un des pins de la carte");
         }
 
         // Vérification de si la checkbox est coché
