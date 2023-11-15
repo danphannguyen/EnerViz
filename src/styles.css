@@ -123,14 +123,28 @@ footer a {
   padding: 10px;
   border: none;
   border-radius: 30px;
-  background-color: rgba(255, 80, 80, 0.8);
   color: white;
-  transition: 0.4s;
+  transition: all ease 0.4s;
 }
 
-.choice:hover {
-  padding: 12px;
+#Production {
   background-color: rgba(255, 80, 80, 1);
+  border: 2px solid rgba(255, 80, 80, 1);
+}
+
+#Production:hover {
+  background-color: transparent;
+  color: rgba(255, 80, 80, 1);
+}
+
+#Consommation {
+  background-color: #7692FF;
+  border: 2px solid #7692FF;
+}
+
+#Consommation:hover {
+  background-color: transparent;
+  color: #7692FF;
 }
 
 .graph-container {
@@ -138,10 +152,6 @@ footer a {
   border-radius: 18px;
   padding: 4px;
   margin-top: 16px;
-}
-
-button .close {
-  background-color: white;
 }
 
 /* ================================================= Filter ================================================= */
@@ -153,6 +163,7 @@ button .close {
   display: flex;
   flex-direction: column;
   gap: 3rem;
+  display: none;
 }
 
 #filterContainer input {
@@ -161,7 +172,8 @@ button .close {
 
 .labelFilter {
   display: inline-block;
-  background-color: rgba(255, 255, 255, 0.4);
+  background-color: rgba(72, 72, 72, 0.4);
+  opacity: 0.75;
   border-radius: 20px;
   cursor: pointer;
 }
@@ -171,8 +183,8 @@ button .close {
 }
 
 input[type="checkbox"].filter:checked+.labelFilter {
-  background-color: rgba(72, 72, 72, 0.4);
-  opacity: 0.75;
+  background-color: rgba(255, 255, 255, 0.4);
+  opacity: 1;
 }
 
 

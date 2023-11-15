@@ -187,8 +187,9 @@ app.addEventListener('mouseDown', (e) => {
             // Permet de changer le titre de la modal
             document.querySelector("#titre").innerHTML = titreHtml;
 
-            // Permet d'ouvrir la modal
+            // Permet d'ouvrir la modal / Reset les checkbox et les afficher
             offcanvas.show();
+            $("#filterContainer").css("display", "flex");
             $(".filter").prop("checked", false);
         }
 
@@ -296,25 +297,27 @@ app.addEventListener('mouseDown', (e) => {
 
     };
 
-    // ICI FAIRE LE CAS "undefined" et "Fermeture"
-
     // Si target = fermeture on cache le offcanvas
     if (targetId == "Fermeture") {
 
+        // Lors de la fermeture on reset de force le canva en le remettant en mode Production et en vidant le dataset
         isProd = true;
-        dataType.textContent = isProd ? 'Production' : 'Consommation';
+        $("#Consommation").css("opacity", 1)
+        $("#Production").css("opacity", 0.25)
         myChart.data.datasets = [];
 
         // Actualisation du titre du graphique
         mode = "Production";
-        myChart.options.plugins.title.text = mode + " totale en " + printHtml;
+        myChart.options.plugins.title.text = mode + " totale en " + printHtml + "(TWh)";
 
         // Si production on rajoute tout les energies sauvegarder en mémoire
         arrayNRJ.forEach(energie => {
             addData(energie.name, energie.data, energie.bColor, energie.bgColor);
         })
 
+        // Reset des filter + display none / fermeture du offcanvas / update du graphique
         $(".filter").prop("checked", false);
+        $("#filterContainer").css("display", "none");
         offcanvas.hide();
         myChart.update();
     }
@@ -398,16 +401,23 @@ function createDatasets(newLabel, newData, newBColor, newBgColor) {
     });
 }
 
-let dataType = document.querySelector('.choice');
+// Initialisation de isProd a true
 let isProd = true;
 
-//Changement du bouton en fonction du type de data
-dataType.addEventListener('click', (e) => {
-    isProd = !isProd;
-    //! pour dire qu'il est false donc je suis en mode consommation
-
-    //Changement du bouton 
-    dataType.textContent = isProd ? 'Production' : 'Consommation';
+$(".choice").click(function (event) {
+    // Récupération de l'id sur le bouton cliqué
+    const id = event.target.id;
+    
+    // Comparaison de Consommation ou Production
+    if (id == "Production") {
+        isProd = true;
+        $("#Consommation").css("opacity", 1)
+        $("#Production").css("opacity", 0.25)
+    } else {
+        isProd = false;
+        $("#Consommation").css("opacity", 0.25)
+        $("#Production").css("opacity", 1)
+    }
 
     // On vide le dataset par précaution
     myChart.data.datasets = [];
@@ -416,31 +426,38 @@ dataType.addEventListener('click', (e) => {
 
         // Actualisation du titre du graphique
         mode = "Production";
-        myChart.options.plugins.title.text = mode + " totale en " + printHtml;
+        myChart.options.plugins.title.text = mode + " totale en " + printHtml + "(TWh)";
 
         // Si production on rajoute tout les energies sauvegarder en mémoire
         arrayNRJ.forEach(energie => {
             addData(energie.name, energie.data, energie.bColor, energie.bgColor);
         })
 
-        $(".choice").css("background-color", "rgba(255, 80, 80, 1)");
+        // Affichage des filtre en mode Production
+        $("#filterContainer").css("display", "flex");
+
     } else {
 
         // Actualisation du titre du graphique
         mode = "Consommation";
-        myChart.options.plugins.title.text = mode + " totale en " + printHtml;
+        myChart.options.plugins.title.text = mode + " totale en " + printHtml + "(TWh)";
 
         // Si consommation on l'objet conso sauvegarder en mémoire
         arrayConso.forEach(conso => {
             addData(conso.name, conso.data, conso.bColor, conso.bgColor);
         })
 
-        $(".choice").css("background-color", "#7692FF");
+        // Cacher les filtres en mode Consommation
+        $("#filterContainer").css("display", "none");
+
     }
 
+    // Reset des filtres lors du changement & Update du charts
     $(".filter").prop("checked", false);
     myChart.update();
+
 });
+
 
 // Permet de détecter le click sur tout les .filter
 $(".filter").click(function () {
@@ -448,45 +465,33 @@ $(".filter").click(function () {
     // Récupere la valeur de la checkbox cliquer
     let value = $(this).val();
 
-    try {
+    // Permet a dave de parler si / Verification que le offcanvas est fermé
+    // if ($("#offcanvasScrolling").hasClass("show") == false) {
+    //     $("#daveText").addClass("show");
+    //     $("#daveText").text("Merci de d'abord selectionner une région! Pour cela clique sur un des pins de la carte");
+    // }
 
-        if ($("#offcanvasScrolling").hasClass("show") == false) {
-            $("#daveText").addClass("show");
-            $("#daveText").text("Merci de d'abord selectionner une région! Pour cela clique sur un des pins de la carte");
-        }
+    // Vérification de si la checkbox est coché
+    if (this.checked == true) {
+        // Vérifie si le dataset est déjà visible ou non
+        let isDatashow = myChart.isDatasetVisible(value);
 
-        // Vérification de si la checkbox est coché
-        if (this.checked == true) {
-            // Vérifie si le dataset est déjà visible ou non
-            let isDatashow = myChart.isDatasetVisible(value);
-
-            // Si il n'est pas visible
-            if (isDatashow === true) {
-                let i = 0;
-                for (let step = 0; step < myChart.data.datasets.length; step++) {
-                    myChart.hide(i);
-                    i += 1;
-                }
-                // On l'affiche
-                myChart.show(value);
-            } else {
-                // Sinon on le cache
-                myChart.show(value);
+        // Si il n'est pas visible
+        if (isDatashow === true) {
+            let i = 0;
+            for (let step = 0; step < myChart.data.datasets.length; step++) {
+                myChart.hide(i);
+                i += 1;
             }
+            // On l'affiche
+            myChart.show(value);
         } else {
-            // Si la checkbox n'est pas cocher on cache le dataset
-            myChart.hide(value);
+            // Sinon on le cache
+            myChart.show(value);
         }
-
-    } catch (error) {
-
-        if ( $("#offcanvasScrolling").hasClass("show") ) {
-            $("#daveText").addClass("show");
-            $("#daveText").text("Le mode consommation ne contient pas de filtre !");
-        } else {
-            $("#daveText").addClass("show");
-            $("#daveText").text("Merci de d'abord selectionner une région! Pour cela clique sur un des pins de la carte");
-        }
+    } else {
+        // Si la checkbox n'est pas cocher on cache le dataset
+        myChart.hide(value);
     }
 
 });
