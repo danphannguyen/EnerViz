@@ -58,6 +58,34 @@ const myChart = new Chart(ctx, {
     }
 });
 
+// Ajout d'un gestionnaire d'événement au clic
+document.getElementById('monGraphique').onclick = function(evt) {
+    var activePoints = myChart.getElementsAtEventForMode(evt, 'nearest', {intersect: true}, true);
+
+    if (activePoints.length > 0) {
+        var clickedDatasetIndex = activePoints[0].datasetIndex;
+        var clickedDataIndex = activePoints[0].index;
+        var clickedValue = myChart.data.datasets[clickedDatasetIndex].data[clickedDataIndex];
+        var clickedLabel = myChart.data.labels[clickedDataIndex];
+
+        // Affichage des informations dans la console
+        /* console.log("Label: " + clickedLabel);
+        console.log("Value: " + clickedValue); */
+
+        // Formater la valeur avec des séparateurs tous les trois chiffres
+        var formattedValue = clickedValue.toLocaleString();
+        
+        // Affichage des informations dans le HTML
+        document.getElementById('affichage-annee').innerHTML = "En " + clickedLabel;
+        document.getElementById('total').innerHTML = formattedValue + " TWh";
+
+        // Affichage de la div
+        document.getElementById('affichage').classList.remove('opacity');
+    } 
+};
+
+//DAB J'AI REUSSI 
+
 //Légende à droite
 myChart.options.plugins.legend.position = 'bottom';
 myChart.update();
@@ -318,6 +346,8 @@ app.addEventListener('mouseDown', (e) => {
         // Reset des filter + display none / fermeture du offcanvas / update du graphique
         $(".filter").prop("checked", false);
         $("#filterContainer").css("display", "none");
+        $("#affichage").addClass("opacity");
+
         offcanvas.hide();
         myChart.update();
     }
@@ -495,3 +525,4 @@ $(".filter").click(function () {
     }
 
 });
+
