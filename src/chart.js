@@ -10,11 +10,18 @@ import NouvelleAquitaine from '../Data Mix/ResultatJSON/NouvelleAquitaine.json' 
 import Occitanie from '../Data Mix/ResultatJSON/Occitanie.json' assert { type: "json" };
 import PaysDeLaLoire from '../Data Mix/ResultatJSON/PaysdelaLoire.json' assert { type: "json" };
 import PACA from '../Data Mix/ResultatJSON/PACA.json' assert { type: "json" };
+import National from '../Data Mix/ResultatJSON/National.json' assert { type: "json" };
 
 import { Application } from '@splinetool/runtime';
 
 // Permet de récupérer tout les JSON dans une liste que l'on pourra parcourir
 let arrayData = [Bretagne, IDF, Auvergne, Bourgogne, Centre, GrandEst, HautsDeFrance, Normandie, NouvelleAquitaine, Occitanie, PaysDeLaLoire, PACA];
+
+// Récupère les value de chaque Energies dans le JSON National
+let arrayDataNational = [];
+National.forEach((element) => { 
+    arrayDataNational.push(element.Value);
+});
 
 // Permet de spécifier les années que l'on cherche ! 
 let arrayAnnees = ['2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021'];
@@ -100,12 +107,30 @@ app.addEventListener('mouseDown', (e) => {
     // initialise la valeur de targetId
     let targetId = ""
     let titreHtml = ""
-
-    console.log(e.target.name)
+    let eTarget = ""
 
     // console.log(e.target.name)
     // switch case qui permet de définir la valeur de targetId en fonction du nom de l'objet cliqué
     switch (e.target.name) {
+        // ==== Energie ==== //
+        case "Nucleaire":
+            eTarget = "Nucleaire";
+            break;
+        case "Charbon":
+            eTarget = "Thermique";
+            break;
+        case "Bio":
+            eTarget = "Bio-Energie";
+            break;
+        case "Barage":
+            eTarget = "Hydraulique";
+            break;
+        case "Solaire":
+            eTarget = "Solaire";
+            break;
+        case "Eolien":
+            eTarget = "Eolien";
+            break;
         // ==== REGION PIN ==== //
         case "Pin B":
             targetId = "Bretagne";
@@ -177,12 +202,9 @@ app.addEventListener('mouseDown', (e) => {
             break;
     }
 
-    console.log(targetId);
-
     // AddEventlistener 'click' sur chaque boutons
     if (targetId != "undefined" || targetId != "Fermeture") {
 
-        $("#daveText").removeClass("show");
         // // Récupération de l'id dans une variable
         // let targetId = event.target.id;
 
@@ -193,6 +215,11 @@ app.addEventListener('mouseDown', (e) => {
 
             // Permet d'ouvrir la modal / Reset les checkbox et les afficher
             offcanvas.show();
+
+            $("#daveText").addClass("show");
+            $("#daveText").text("N'oublies pas, tu peux aussi affiner ta recherche avec les filtres sur ta gauche !");
+
+            $("#Production").css("opacity", 0.25)
             $("#filterContainer").css("display", "flex");
             $(".filter").prop("checked", false);
         }
@@ -322,12 +349,37 @@ app.addEventListener('mouseDown', (e) => {
         // Reset des filter + display none / fermeture du offcanvas / update du graphique
         $(".filter").prop("checked", false);
         $("#filterContainer").css("display", "none");
+
+        $("#daveText").removeClass("show");
+        $("#daveText").text("");
+
         offcanvas.hide();
         myChart.update();
     }
 
-});
+    if (eTarget != "") {
 
+        National.forEach((element) => { 
+            if (element.Energie == eTarget) {
+
+                let biographie = element.Text;
+                $("#daveText").text(biographie);
+                $("#daveText").toggleClass("show");
+
+                $('#nationalContainer').toggleClass("show");
+
+                let newColors = element.Color;
+                pieChart.data.datasets[0].backgroundColor = newColors;
+                pieChart.update();
+            }
+        });
+
+        eTarget = "";
+    };
+
+
+
+});
 
 function addData(newLabel, newData, newBColor, newBgColor) {
 
@@ -411,7 +463,7 @@ let isProd = true;
 $(".choice").click(function (event) {
     // Récupération de l'id sur le bouton cliqué
     const id = event.target.id;
-    
+
     // Comparaison de Consommation ou Production
     if (id == "Production") {
         isProd = true;
@@ -439,6 +491,7 @@ $(".choice").click(function (event) {
 
         // Affichage des filtre en mode Production
         $("#filterContainer").css("display", "flex");
+        $("#daveText").addClass("show");
 
     } else {
 
@@ -453,6 +506,7 @@ $(".choice").click(function (event) {
 
         // Cacher les filtres en mode Consommation
         $("#filterContainer").css("display", "none");
+        $("#daveText").removeClass("show");
 
     }
 
@@ -499,3 +553,45 @@ $(".filter").click(function () {
     }
 
 });
+
+// Initalisation du graphique
+const ctx2 = document.getElementById('pieChart')
+const pieChart = new Chart(ctx2, {
+    type: 'pie',
+    data: {
+        labels: ['Thermique', 'Nucleaire','Eolien' ,'Hydraulique', 'Solaire', 'Bio-Energie'],
+        datasets: [
+            {
+                data: arrayDataNational,
+                backgroundColor: [
+                    'rgba(255, 99, 132, 1)',   // Rouge
+                    'rgba(54, 162, 235, 1)',  // Bleu
+                    'rgba(255, 206, 86, 1)',  // Jaune
+                    'rgba(255, 99, 132, 1)',  // Rouge (répété à titre d'exemple)
+                    'rgba(255, 99, 132, 1)',  // Rouge (répété à titre d'exemple)
+                ],
+            },
+        ],
+    },
+    options: {
+        plugins: {
+            datalabels: {
+                display: true,
+                align: 'bottom',
+                backgroundColor: '#ccc',
+                borderRadius: 3,
+                font: {
+                    size: 18,
+                },
+            },
+            title: {
+                display: true,
+                text: 'Lorem ipsum dolore'
+            },
+            legend: {
+                display: false
+            }
+        },
+    },
+});
+

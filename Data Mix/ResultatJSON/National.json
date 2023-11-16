@@ -1,0 +1,80 @@
+[
+    {
+        "Energie": "Thermique",
+        "Value": 718745883547,
+        "Text": "La production d'énergie thermique repose sur la conversion de la chaleur générée par la combustion de combustibles fossiles tels que le charbon, le gaz naturel ou le fioul. Cette méthode contribue significativement au mix énergétique français en fournissant une source continue et stable d'électricité.",
+        "Color": [
+            "rgba(255, 108, 0, 1)",   
+            "rgba(147, 222, 134, 0.1)",  
+            "rgba(180, 244, 239, 0.1)",  
+            "rgba(255, 241, 106, 0.1)",  
+            "rgba(143, 167, 252, 0.1)",
+            "rgba(255, 189, 235, 0.1)"
+        ]
+    },
+    {
+        "Energie": "Nucleaire",
+        "Value": 7622907172030,
+        "Text": "L'énergie nucléaire constitue une part importante du mix énergétique français en exploitant la fission nucléaire pour générer de l'électricité. Les centrales nucléaires fournissent une source continue et stable d'énergie, contribuant significativement à la production nationale tout en limitant les émissions de gaz à effet de serre. Bien que débattue en raison de considérations environnementales, l'énergie nucléaire demeure un pilier majeur dans la quête d'une production énergétique diversifiée et durable en France.",
+        "Color": [
+            "rgba(255, 108, 0, 0.1)",   
+            "rgba(147, 222, 134, 1)",  
+            "rgba(180, 244, 239, 0.1)",  
+            "rgba(255, 241, 106, 0.1)",  
+            "rgba(143, 167, 252, 0.1)",
+            "rgba(255, 189, 235, 0.1)"
+        ]
+    },
+    {
+        "Energie": "Eolien",
+        "Value": 331973646824,
+        "Text": "Les éoliennes convertissent l'énergie cinétique du vent en électricité, offrant une contribution significative à la production d'énergie renouvelable. L'énergie éolienne joue un rôle clé dans la transition vers une grille énergétique plus verte en France, en exploitant une ressource naturelle abondante et disponible.",
+        "Color": [
+            "rgba(255, 108, 0, 0.1)",   
+            "rgba(147, 222, 134, 0.1)",  
+            "rgba(180, 244, 239, 1)",  
+            "rgba(255, 241, 106, 0.1)",  
+            "rgba(143, 167, 252, 0.1)",
+            "rgba(255, 189, 235, 0.1)"
+        ]
+    },
+    {
+        "Energie": "Bio-Energie",
+        "Value": 131079434083,
+        "Text": "Issue de la biomasse, la bio-énergie représente une solution durable en transformant des déchets organiques en électricité. Cette source d'énergie renouvelable favorise la réduction des émissions de carbone et soutient la transition vers une production énergétique plus respectueuse de l'environnement.",
+        "Color": [
+            "rgba(255, 108, 0, 0.1)",   
+            "rgba(147, 222, 134, 0.1)",  
+            "rgba(180, 244, 239, 0.1)",  
+            "rgba(255, 241, 106, 1)",  
+            "rgba(143, 167, 252, 0.1)",
+            "rgba(255, 189, 235, 0.1)"
+        ]
+    },
+    {
+        "Energie": "Hydraulique",
+        "Value": 1325605040042,
+        "Text": "L'énergie hydraulique tire parti du mouvement de l'eau pour produire de l'électricité. Les barrages et les centrales hydroélectriques jouent un rôle essentiel dans le mix énergétique français en fournissant une énergie propre et régulière, contribuant ainsi à la stabilité du réseau.",
+        "Color": [
+            "rgba(255, 108, 0, 0.1)",   
+            "rgba(147, 222, 134, 0.1)",  
+            "rgba(180, 244, 239, 0.1)",  
+            "rgba(255, 241, 106, 0.1)",  
+            "rgba(143, 167, 252, 1)",
+            "rgba(255, 189, 235, 0.1)"
+        ]
+    },
+    {
+        "Energie": "Solaire",
+        "Value": 106760032725,
+        "Text": "La capture de l'énergie solaire à l'aide de panneaux photovoltaïques constitue une composante croissante du mix énergétique en France. Cette source renouvelable, exploitant l'abondance de l'énergie solaire, contribue à diversifier le bouquet énergétique et à réduire la dépendance aux combustibles fossiles.",
+        "Color": [
+            "rgba(255, 108, 0, 0.1)",   
+            "rgba(147, 222, 134, 0.1)",  
+            "rgba(180, 244, 239, 0.1)",  
+            "rgba(255, 241, 106, 0.1)",  
+            "rgba(143, 167, 252, 0.1)",
+            "rgba(255, 189, 235, 1)"
+        ]
+    }
+]
