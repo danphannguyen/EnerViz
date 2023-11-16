@@ -101,6 +101,8 @@ app.addEventListener('mouseDown', (e) => {
     let targetId = ""
     let titreHtml = ""
 
+    console.log(e.target.name)
+
     // console.log(e.target.name)
     // switch case qui permet de définir la valeur de targetId en fonction du nom de l'objet cliqué
     switch (e.target.name) {
@@ -157,7 +159,7 @@ app.addEventListener('mouseDown', (e) => {
         case "B":
         case "IDF":
         case "ARA":
-        case "BCF":
+        case "BFC":
         case "CVL":
         case "GE":
         case "HF":
@@ -174,6 +176,8 @@ app.addEventListener('mouseDown', (e) => {
             targetId = "undefined";
             break;
     }
+
+    console.log(targetId);
 
     // AddEventlistener 'click' sur chaque boutons
     if (targetId != "undefined" || targetId != "Fermeture") {
