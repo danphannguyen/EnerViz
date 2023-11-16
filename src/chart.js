@@ -82,19 +82,7 @@ const app = new Application(canvas);
 
 app.load('https://prod.spline.design/7ro9L-eFB8YM5Ktn/scene.splinecode')
     .then(() => {
-        const nuc = app.findObjectByName('Nucleaire');
-        const barage = app.findObjectByName('Barage');
-        const cam1 = app.findObjectByName('CamBase');
-
-        // console.log(nuc);
-        // console.log(barage);
-        // console.log(cam1);
-
-        // for (const AllObjects of app.getAllObjects()) {
-        //   console.log(AllObjects.name);
-        //   console.log(AllObjects);
-        // }
-
+        console.log('Scène chargée avec succès!');
     })
 
     .catch(error => {
@@ -357,23 +345,29 @@ app.addEventListener('mouseDown', (e) => {
         myChart.update();
     }
 
+    // Permet de détecter le click sur les modèles 3D d'énergies
     if (eTarget != "") {
 
+        // Permet de récupérer les données du json national == à l'id de l'energie cliqué
         National.forEach((element) => { 
             if (element.Energie == eTarget) {
 
+                // Fait apparaitre le texte de Dave
                 let biographie = element.Text;
                 $("#daveText").text(biographie);
                 $("#daveText").toggleClass("show");
 
+                // Fait apparaitre le container du piechart
                 $('#nationalContainer').toggleClass("show");
 
+                // Permet de changer les couleurs du pieChart
                 let newColors = element.Color;
                 pieChart.data.datasets[0].backgroundColor = newColors;
                 pieChart.update();
             }
         });
 
+        // Reset le eTarget pour éviter les bugs
         eTarget = "";
     };
 
@@ -523,12 +517,6 @@ $(".filter").click(function () {
     // Récupere la valeur de la checkbox cliquer
     let value = $(this).val();
 
-    // Permet a dave de parler si / Verification que le offcanvas est fermé
-    // if ($("#offcanvasScrolling").hasClass("show") == false) {
-    //     $("#daveText").addClass("show");
-    //     $("#daveText").text("Merci de d'abord selectionner une région! Pour cela clique sur un des pins de la carte");
-    // }
-
     // Vérification de si la checkbox est coché
     if (this.checked == true) {
         // Vérifie si le dataset est déjà visible ou non
@@ -554,12 +542,12 @@ $(".filter").click(function () {
 
 });
 
-// Initalisation du graphique
+// Initalisation du graphique pieChart 
 const ctx2 = document.getElementById('pieChart')
 const pieChart = new Chart(ctx2, {
     type: 'pie',
     data: {
-        labels: ['Thermique', 'Nucleaire','Eolien' ,'Hydraulique', 'Solaire', 'Bio-Energie'],
+        labels: ['Thermique', 'Nucleaire','Eolien','Bio-Energie' ,'Hydraulique', 'Solaire' ],
         datasets: [
             {
                 data: arrayDataNational,
@@ -586,7 +574,7 @@ const pieChart = new Chart(ctx2, {
             },
             title: {
                 display: true,
-                text: 'Lorem ipsum dolore'
+                text: 'Mix énergétique en France'
             },
             legend: {
                 display: false
