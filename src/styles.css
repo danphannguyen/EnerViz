@@ -246,6 +246,7 @@ input[type="checkbox"].filter:checked+.labelFilter {
   bottom: 40px;
   display: flex;
   align-items: center;
+  cursor: pointer;
 }
 
 #daveContainer span {
