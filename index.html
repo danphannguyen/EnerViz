@@ -34,11 +34,26 @@
     </div>
   </div>
 
+  <section class="modal hide fade" tabindex="-1" id="welcome-modal">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h5>💡 Bienvenue sur EnerViz' !</h5>
+        <h5><strong>Sur ce site, vous pouvez visualiser l'évolution de la consommation et la production d'énergie en France au cours des dernières années.</strong> </h5>
+        <h5>📍 Sélectionnez une région grâce aux pins présents sur la map interactive pour visualiser la consommation et la production d'une région.</h5>
+        <h5>⚡️ Vous pouvez également découvrir la répartition de chaque énergie en France en cliquant sur les différentes sources sur la map interactive.</h5>
+      </div>
+  </section>
+
+
   <section id="interface">
     <canvas id="canvas3d" height="180"></canvas>
     <a class="logo" href="https://spline.design"></a>
 
-    <div id="daveContainer">
+    <div id="daveContainer" data-bs-toggle="modal" data-bs-target="#htu-modal">
       <img src="img/daveInit.svg" alt="">
       <span id="daveText">Lorem ipsum dolor sit amet consectetur adipisicing elit.</span>
     </div>
@@ -46,6 +61,21 @@
     <div id="nationalContainer">
       <canvas id="pieChart"></canvas>
     </div>
+
+    <section class="modal hide fade" tabindex="-1" id="htu-modal">
+      <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5>Mode d'Emploi</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <h5>💡 Bienvenue sur EnerViz' !</h5>
+          <h5><strong>Sur ce site, vous pouvez visualiser l'évolution de la consommation et la production d'énergie en France au cours des dernières années. </strong></h5>
+          <h5>📍 Sélectionnez une région grâce aux pins présents sur la map interactive pour visualiser la consommation et la production d'une région.</h5>
+          <h5>⚡️ Vous pouvez également découvrir la répartition de chaque énergie en France en cliquant sur les différentes sources sur la map interactive.</h5>
+        </div>
+    </section>
 
     <div id="filterContainer">
       <div>
@@ -100,13 +130,18 @@
         <h2 id="label"></h2>
         <canvas id="monGraphique"></canvas>
       </div>
+
+      <div id="affichage" class="graph-container opacity" >
+        <p id="affichage-annee">année</p>
+        <h2 id="total" class="affichage-total">total Twh</h2>
+      </div>
     </div>
 
   </div>
 
   <footer>
     <a>© 2023-2024 DataViz' |</a>
-    <a href="#" data-bs-toggle="modal" data-bs-target="#mentionsLegalesModal">Mentions légales</a>
+    <a href="#" id="mentionsLegalesButton" class="mentionlegales" data-bs-toggle="modal" data-bs-target="#mentionsLegalesModal">Mentions légales</a>
   </footer>
 
   <div class="modal fade" id="mentionsLegalesModal" tabindex="-1" aria-labelledby="mentionsLegalesModalLabel"

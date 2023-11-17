@@ -65,15 +65,52 @@ const myChart = new Chart(ctx, {
     }
 });
 
+// Ajout d'un gestionnaire d'événement au clic
+document.getElementById('monGraphique').onclick = function(evt) {
+    var activePoints = myChart.getElementsAtEventForMode(evt, 'nearest', {intersect: true}, true);
+
+    if (activePoints.length > 0) {
+        var clickedDatasetIndex = activePoints[0].datasetIndex;
+        var clickedDataIndex = activePoints[0].index;
+        var clickedValue = myChart.data.datasets[clickedDatasetIndex].data[clickedDataIndex];
+        var clickedLabel = myChart.data.labels[clickedDataIndex];
+
+        // Affichage des informations dans la console
+        /* console.log("Label: " + clickedLabel);
+        console.log("Value: " + clickedValue); */
+
+        // Formater la valeur avec des séparateurs tous les trois chiffres
+        var formattedValue = clickedValue.toLocaleString();
+        
+        // Affichage des informations dans le HTML
+        document.getElementById('affichage-annee').innerHTML = "En " + clickedLabel;
+        document.getElementById('total').innerHTML = formattedValue + " TWh";
+
+        // Affichage de la div
+        document.getElementById('affichage').classList.remove('opacity');
+    } 
+};
+
+//DAB J'AI REUSSI 
+
 //Légende à droite
 myChart.options.plugins.legend.position = 'bottom';
 myChart.update();
 
-//Fonction pour initialiser le loader en fonction d'un temps donner
+//Initialisation du loader, attente de 10 secondes avant de le cacher et d'afficher la modal 
 window.addEventListener('load', function () {
     setTimeout(function () {
         document.getElementById('loader').style.display = 'none';
+        $('#welcome-modal').modal('show');
     }, 10000);
+    
+    $('#welcome-modal').on('shown.bs.modal', function () {
+        $('#mentionsLegalesButton').css('pointer-events', 'none');
+    });
+
+    $('#welcome-modal').on('hidden.bs.modal', function () {
+        $('#mentionsLegalesButton').css('pointer-events', 'auto');
+    });
 });
 
 // Initialisation de canvas Spline
