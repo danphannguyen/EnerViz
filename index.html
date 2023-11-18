@@ -6,7 +6,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="./src/styles.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" />
-  <style>.logo{position:absolute;bottom:40px;right:40px;width:32px;height:32px;z-index:2;background-image:url(https://app.spline.design/_assets/_icons/icon_favicon32x32.png);background-size:cover;}.logo:hover{opacity:0.8;}</style>
+  <style>
+    .logo {
+      position: absolute;
+      bottom: 40px;
+      right: 40px;
+      width: 32px;
+      height: 32px;
+      z-index: 2;
+      background-image: url(https://app.spline.design/_assets/_icons/icon_favicon32x32.png);
+      background-size: cover;
+    }
+
+    .logo:hover {
+      opacity: 0.8;
+    }
+  </style>
   <link
     href="https://api.fontshare.com/v2/css?f[]=chillax@1,600,500,300,700,400,200&f[]=satoshi@1,900,700,500,301,701,300,501,401,901,400,2&display=swap"
     rel="stylesheet">
@@ -19,14 +34,57 @@
     </div>
   </div>
 
+  <section class="modal hide fade" tabindex="-1" id="welcome-modal">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">💡 Bienvenue sur EnerViz' !</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <br>
+        <h5><strong>Sur ce site, vous pouvez visualiser l'évolution de la consommation et la production d'énergie en France au cours des dernières années.</strong> </h5>
+        <br>
+        <h5>📍 Sélectionnez une région grâce aux pins présents sur la map interactive pour visualiser la consommation et la production d'une région.</h5>
+        <br>
+        <h5>⚡️ Vous pouvez également découvrir la répartition de chaque énergie en France en cliquant sur les différentes sources sur la map interactive.</h5>
+        <br>
+        <h5>📈 Enfin, vous pouvez cliquer sur nos graphiques pour afficher la valeur souhaitée !</h5>
+      </div>
+  </section>
+
+
   <section id="interface">
     <canvas id="canvas3d" height="180"></canvas>
     <a class="logo" href="https://spline.design"></a>
 
-    <div id="daveContainer">
+    <div id="daveContainer" data-bs-toggle="modal" data-bs-target="#htu-modal">
       <img src="img/daveInit.svg" alt="">
-      <span id="daveText">Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni eos cupiditate iure aspernatur inventore qui exercitationem libero rerum ut, amet, quia nobis similique. Totam recusandae neque doloremque, magni tenetur voluptates.</span>
+      <span id="daveText">Lorem ipsum dolor sit amet consectetur adipisicing elit.</span>
     </div>
+
+    <div id="nationalContainer">
+      <canvas id="pieChart"></canvas>
+    </div>
+
+    <section class="modal hide fade" tabindex="-1" id="htu-modal">
+      <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5>Mode d'Emploi</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <br>
+          <h5><strong>Sur ce site, vous pouvez visualiser l'évolution de la consommation et la production d'énergie en France au cours des dernières années. </strong></h5>
+          <br>
+          <h5>📍 Sélectionnez une région grâce aux pins présents sur la map interactive pour visualiser la consommation et la production d'une région.</h5>
+          <br>
+          <h5>⚡️ Vous pouvez également découvrir la répartition de chaque énergie en France en cliquant sur les différentes sources sur la map interactive.</h5>
+          <br>
+          <h5>📈 Enfin, vous pouvez cliquer sur nos graphiques pour afficher la valeur souhaitée !</h5>
+        </div>
+    </section>
 
     <div id="filterContainer">
       <div>
@@ -92,12 +150,12 @@
 
   <footer>
     <a>© 2023-2024 DataViz' |</a>
-    <a href="#" data-bs-toggle="modal" data-bs-target="#mentionsLegalesModal">Mentions légales</a>
+    <a href="#" id="mentionsLegalesButton" class="mentionlegales" data-bs-toggle="modal" data-bs-target="#mentionsLegalesModal">Mentions légales</a>
   </footer>
 
   <div class="modal fade" id="mentionsLegalesModal" tabindex="-1" aria-labelledby="mentionsLegalesModalLabel"
     aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
 
       <div class="modal-content">
         <div class="modal-header">
@@ -106,19 +164,21 @@
         </div>
         <div class="modal-body">
           <h5>Editeur du site</h5>
-          <p>Dan PHAN-NGUYEN</p>
-          <p>Léana LIM</p>
-          <p>Andy RABARISON</p>
+          <p>Dan PHAN-NGUYEN / Léana LIM / Andy RABARISON </p>
           <hr>
           <h5>Hébergeur</h5>
           <a href="https://www.o2switch.fr">O2Switch</a>
-          <p></p>
           <hr>
           <h5>Sources des données</h5>
           <p>Toutes les informations utilisés et traités sur le site sot de la propriétét de RTE et sont utilisés dans
-            un but informatif et pédagogique et n'est ici utilisés que dans le cadre d'un projet étudiant. Les données
+            un buy informatif et pédagogiques et n'est ici utilisés que dans le cadre d'un projet étudiant. Les données
             proviennent du site <a href="www.ret-france.com">RTE France</a> et de la <a
-              href="www.data.gouv.fr">plateforme de diffusion de données publiques de l'Etat français</a></p>
+              href="www.data.gouv.fr">plateforme de diffusion de données publiques de l'Etat français.</a></p>
+          <hr>
+          <h5>Source Illustration</h5>
+          <p>Illustration "Light Bulb" provenant du site <a href="https://www.vecteezy.com/">Vecteezy</a> créé par l'auteur "wisnu kristiano".</p>
+
+
         </div>
       </div>
     </div>

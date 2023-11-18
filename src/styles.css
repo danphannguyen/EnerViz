@@ -17,6 +17,7 @@ html {
 body {
   margin: 0;
   padding: 0;
+  overflow-y: hidden;
 }
 
 body::-webkit-scrollbar {
@@ -79,6 +80,7 @@ canvas {
 
 #loader {
   background-color: rgb(131,192,109);
+  overflow:hidden;
 }
 
 /* ================================================= Footer ================================================= */
@@ -112,7 +114,13 @@ footer a {
   padding: 20px 10px;
 }
 
-/*========== Window POP UP =========== */
+.title-pop-up {
+  background-color: white;
+  display: flex !important;
+  justify-content: center !important;
+  padding: 7px;
+  border-radius: 18px;
+}
 
 .choice {
   padding: 10px;
@@ -209,6 +217,23 @@ input[type="checkbox"].filter:checked+.labelFilter {
 }
 
 
+
+/* ================================================= Dave ================================================= */
+
+#nationalContainer {
+  display: none;
+  position: absolute;
+  left: 20px;
+  top: 20px;
+  border-radius: 10%;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+#nationalContainer canvas {
+  width: 200px !important;
+  height: 200px !important;
+}
 /* ================================================= Dave ================================================= */
 
 .show {
@@ -221,12 +246,13 @@ input[type="checkbox"].filter:checked+.labelFilter {
   bottom: 40px;
   display: flex;
   align-items: center;
+  cursor: pointer;
 }
 
 #daveContainer span {
+  width: 80%;
   padding: 20px;
   border-radius: 16px;
-  border: 2px solid black;
   background-color: white;
   display: none;
 }
@@ -235,3 +261,4 @@ input[type="checkbox"].filter:checked+.labelFilter {
   width: 100px;
   height: 100px;
 }
+

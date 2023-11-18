@@ -10,11 +10,18 @@ import NouvelleAquitaine from '../Data Mix/ResultatJSON/NouvelleAquitaine.json' 
 import Occitanie from '../Data Mix/ResultatJSON/Occitanie.json' assert { type: "json" };
 import PaysDeLaLoire from '../Data Mix/ResultatJSON/PaysdelaLoire.json' assert { type: "json" };
 import PACA from '../Data Mix/ResultatJSON/PACA.json' assert { type: "json" };
+import National from '../Data Mix/ResultatJSON/National.json' assert { type: "json" };
 
 import { Application } from '@splinetool/runtime';
 
 // Permet de récupérer tout les JSON dans une liste que l'on pourra parcourir
 let arrayData = [Bretagne, IDF, Auvergne, Bourgogne, Centre, GrandEst, HautsDeFrance, Normandie, NouvelleAquitaine, Occitanie, PaysDeLaLoire, PACA];
+
+// Récupère les value de chaque Energies dans le JSON National
+let arrayDataNational = [];
+National.forEach((element) => { 
+    arrayDataNational.push(element.Value);
+});
 
 // Permet de spécifier les années que l'on cherche ! 
 let arrayAnnees = ['2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021'];
@@ -90,11 +97,20 @@ document.getElementById('monGraphique').onclick = function(evt) {
 myChart.options.plugins.legend.position = 'bottom';
 myChart.update();
 
-//Fonction pour initialiser le loader en fonction d'un temps donner
+//Initialisation du loader, attente de 10 secondes avant de le cacher et d'afficher la modal 
 window.addEventListener('load', function () {
     setTimeout(function () {
         document.getElementById('loader').style.display = 'none';
+        $('#welcome-modal').modal('show');
     }, 10000);
+    
+    $('#welcome-modal').on('shown.bs.modal', function () {
+        $('#mentionsLegalesButton').css('pointer-events', 'none');
+    });
+
+    $('#welcome-modal').on('hidden.bs.modal', function () {
+        $('#mentionsLegalesButton').css('pointer-events', 'auto');
+    });
 });
 
 // Initialisation de canvas Spline
@@ -103,19 +119,7 @@ const app = new Application(canvas);
 
 app.load('https://prod.spline.design/7ro9L-eFB8YM5Ktn/scene.splinecode')
     .then(() => {
-        const nuc = app.findObjectByName('Nucleaire');
-        const barage = app.findObjectByName('Barage');
-        const cam1 = app.findObjectByName('CamBase');
-
-        // console.log(nuc);
-        // console.log(barage);
-        // console.log(cam1);
-
-        // for (const AllObjects of app.getAllObjects()) {
-        //   console.log(AllObjects.name);
-        //   console.log(AllObjects);
-        // }
-
+        console.log('Scène chargée avec succès!');
     })
 
     .catch(error => {
@@ -128,10 +132,30 @@ app.addEventListener('mouseDown', (e) => {
     // initialise la valeur de targetId
     let targetId = ""
     let titreHtml = ""
+    let eTarget = ""
 
     // console.log(e.target.name)
     // switch case qui permet de définir la valeur de targetId en fonction du nom de l'objet cliqué
     switch (e.target.name) {
+        // ==== Energie ==== //
+        case "Nucleaire":
+            eTarget = "Nucleaire";
+            break;
+        case "Charbon":
+            eTarget = "Thermique";
+            break;
+        case "Bio":
+            eTarget = "Bio-Energie";
+            break;
+        case "Barage":
+            eTarget = "Hydraulique";
+            break;
+        case "Solaire":
+            eTarget = "Solaire";
+            break;
+        case "Eolien":
+            eTarget = "Eolien";
+            break;
         // ==== REGION PIN ==== //
         case "Pin B":
             targetId = "Bretagne";
@@ -185,7 +209,7 @@ app.addEventListener('mouseDown', (e) => {
         case "B":
         case "IDF":
         case "ARA":
-        case "BCF":
+        case "BFC":
         case "CVL":
         case "GE":
         case "HF":
@@ -206,7 +230,6 @@ app.addEventListener('mouseDown', (e) => {
     // AddEventlistener 'click' sur chaque boutons
     if (targetId != "undefined" || targetId != "Fermeture") {
 
-        $("#daveText").removeClass("show");
         // // Récupération de l'id dans une variable
         // let targetId = event.target.id;
 
@@ -217,6 +240,11 @@ app.addEventListener('mouseDown', (e) => {
 
             // Permet d'ouvrir la modal / Reset les checkbox et les afficher
             offcanvas.show();
+
+            $("#daveText").addClass("show");
+            $("#daveText").text("N'oublies pas, tu peux aussi affiner ta recherche avec les filtres sur ta gauche !");
+
+            $("#Production").css("opacity", 0.25)
             $("#filterContainer").css("display", "flex");
             $(".filter").prop("checked", false);
         }
@@ -346,14 +374,39 @@ app.addEventListener('mouseDown', (e) => {
         // Reset des filter + display none / fermeture du offcanvas / update du graphique
         $(".filter").prop("checked", false);
         $("#filterContainer").css("display", "none");
-        $("#affichage").addClass("opacity");
-
         offcanvas.hide();
         myChart.update();
     }
 
-});
+    // Permet de détecter le click sur les modèles 3D d'énergies
+    if (eTarget != "") {
 
+        // Permet de récupérer les données du json national == à l'id de l'energie cliqué
+        National.forEach((element) => { 
+            if (element.Energie == eTarget) {
+
+                // Fait apparaitre le texte de Dave
+                let biographie = element.Text;
+                $("#daveText").text(biographie);
+                $("#daveText").toggleClass("show");
+
+                // Fait apparaitre le container du piechart
+                $('#nationalContainer').toggleClass("show");
+
+                // Permet de changer les couleurs du pieChart
+                let newColors = element.Color;
+                pieChart.data.datasets[0].backgroundColor = newColors;
+                pieChart.update();
+            }
+        });
+
+        // Reset le eTarget pour éviter les bugs
+        eTarget = "";
+    };
+
+
+
+});
 
 function addData(newLabel, newData, newBColor, newBgColor) {
 
@@ -437,7 +490,7 @@ let isProd = true;
 $(".choice").click(function (event) {
     // Récupération de l'id sur le bouton cliqué
     const id = event.target.id;
-    
+
     // Comparaison de Consommation ou Production
     if (id == "Production") {
         isProd = true;
@@ -465,6 +518,7 @@ $(".choice").click(function (event) {
 
         // Affichage des filtre en mode Production
         $("#filterContainer").css("display", "flex");
+        $("#daveText").addClass("show");
 
     } else {
 
@@ -479,6 +533,7 @@ $(".choice").click(function (event) {
 
         // Cacher les filtres en mode Consommation
         $("#filterContainer").css("display", "none");
+        $("#daveText").removeClass("show");
 
     }
 
@@ -494,12 +549,6 @@ $(".filter").click(function () {
 
     // Récupere la valeur de la checkbox cliquer
     let value = $(this).val();
-
-    // Permet a dave de parler si / Verification que le offcanvas est fermé
-    // if ($("#offcanvasScrolling").hasClass("show") == false) {
-    //     $("#daveText").addClass("show");
-    //     $("#daveText").text("Merci de d'abord selectionner une région! Pour cela clique sur un des pins de la carte");
-    // }
 
     // Vérification de si la checkbox est coché
     if (this.checked == true) {
@@ -525,4 +574,3 @@ $(".filter").click(function () {
     }
 
 });
-
