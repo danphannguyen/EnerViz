@@ -233,6 +233,7 @@ input[type="checkbox"].filter:checked+.labelFilter {
 #nationalContainer canvas {
   width: 200px !important;
   height: 200px !important;
+  margin-bottom: 20px;
 }
 /* ================================================= Dave ================================================= */
 
