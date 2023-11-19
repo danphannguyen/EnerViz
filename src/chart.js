@@ -591,7 +591,7 @@ const pieChart = new Chart(ctx2, {
                 backgroundColor: [
                     'rgba(255, 99, 132, 1)',   // Rouge
                     'rgba(54, 162, 235, 1)',  // Bleu
-                    'rgba(255, 206, 86, 1)',  // Jaune
+                    'rgba(255, 175, 0, 0.8)',  // Jaune
                     'rgba(255, 99, 132, 1)',  // Rouge (répété à titre d'exemple)
                     'rgba(255, 99, 132, 1)',  // Rouge (répété à titre d'exemple)
                 ],
