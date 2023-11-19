@@ -114,13 +114,13 @@ footer a {
   padding: 20px 10px;
 }
 
-.title-pop-up {
-  background-color: white;
-  display: flex !important;
-  justify-content: center !important;
-  padding: 7px;
-  border-radius: 18px;
+/* ================================================= Mention Legales ================================================= */
+.mentionlegales {
+  pointer-events: none;
+  cursor: default;
 }
+
+/*========== Window POP UP =========== */
 
 .choice {
   padding: 10px;
