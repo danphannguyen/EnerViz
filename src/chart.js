@@ -162,7 +162,7 @@ app.addEventListener('mouseDown', (e) => {
             titreHtml = "Bretagne";
             break;
         case "Eiffel Tower":
-            targetId = "IDF";
+            targetId = "IledeFrance";
             titreHtml = "Ile de France";
             break;
         case "Pin ARA":
