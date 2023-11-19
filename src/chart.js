@@ -122,7 +122,7 @@ window.addEventListener('load', function () {
 const canvas = document.getElementById('canvas3d');
 const app = new Application(canvas);
 
-app.load('https://prod.spline.design/7ro9L-eFB8YM5Ktn/scene.splinecode')
+app.load('../scene/scene.splinecode')
     .then(() => {
         console.log('Scène chargée avec succès!');
     })
