@@ -14,6 +14,11 @@ import National from '../Data Mix/ResultatJSON/National.json' assert { type: "js
 
 import { Application } from '@splinetool/runtime';
 
+//juste j'fais le calcule vous inquietez pas les mates
+
+/* let result = (106760032725/10237071209251)*100;
+console.log(result); */
+
 // Permet de récupérer tout les JSON dans une liste que l'on pourra parcourir
 let arrayData = [Bretagne, IDF, Auvergne, Bourgogne, Centre, GrandEst, HautsDeFrance, Normandie, NouvelleAquitaine, Occitanie, PaysDeLaLoire, PACA];
 
@@ -382,6 +387,8 @@ app.addEventListener('mouseDown', (e) => {
         myChart.update();
     }
 
+    let pourcentage = "";
+
     // Permet de détecter le click sur les modèles 3D d'énergies
     if (eTarget != "") {
 
@@ -401,6 +408,15 @@ app.addEventListener('mouseDown', (e) => {
                 let newColors = element.Color;
                 pieChart.data.datasets[0].backgroundColor = newColors;
                 pieChart.update();
+
+                //Permet d'afficher le nom de l'énergie cliqué
+                let name = element.Energie;
+                document.getElementById('NRJTitle').innerHTML = name;
+
+                // Permet de récupérer le pourcentage de l'énergie cliqué et l'afficher dans le HTML
+                pourcentage = element.pourcent;
+                document.getElementById('pourcentage-NRJ').innerHTML = pourcentage + "% en 2021";
+
             }
         });
 
@@ -619,3 +635,5 @@ const pieChart = new Chart(ctx2, {
         },
     },
 });
+
+//fonctionne zbi
