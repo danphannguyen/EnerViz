@@ -627,7 +627,7 @@ const pieChart = new Chart(ctx2, {
             },
             title: {
                 display: true,
-                text: 'Mix énergétique en France'
+                text: 'Mix énergétique en France (en TWh)'
             },
             legend: {
                 display: false
