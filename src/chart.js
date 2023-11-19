@@ -374,6 +374,10 @@ app.addEventListener('mouseDown', (e) => {
         // Reset des filter + display none / fermeture du offcanvas / update du graphique
         $(".filter").prop("checked", false);
         $("#filterContainer").css("display", "none");
+
+        $("#daveText").removeClass("show");
+        $("#daveText").text("");
+
         offcanvas.hide();
         myChart.update();
     }
