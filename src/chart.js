@@ -616,3 +616,4 @@ const pieChart = new Chart(ctx2, {
     },
 });
 
+//fonctionne zbi
