@@ -105,11 +105,11 @@ window.addEventListener('load', function () {
     }, 10000);
     
     $('#welcome-modal').on('shown.bs.modal', function () {
-        $('#mentionlegales').css('cursor', 'not-allowed');
+        $('#mentionlegales').css('pointer-events', 'none');
     });
 
     $('#welcome-modal').on('hidden.bs.modal', function () {
-        $('#mmentionlegales').css('cursor', 'pointer');
+        $('#mmentionlegales').css('pointer-events', 'auto');
     });
 });
 
