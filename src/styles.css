@@ -116,8 +116,13 @@ footer a {
 
 /* ================================================= Mention Legales ================================================= */
 .mentionlegales {
-  pointer-events: none;
-  cursor: default;
+  cursor: pointer;
+  opacity: 0.5;
+  transition: all ease 0.4s;
+}
+
+.mentionlegales:hover {
+  opacity: 1;
 }
 
 /*========== Window POP UP =========== */
