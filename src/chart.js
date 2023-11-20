@@ -102,6 +102,7 @@ window.addEventListener('load', function () {
     setTimeout(function () {
         document.getElementById('loader').style.display = 'none';
         $('#welcome-modal').modal('show');
+        $('footer').css('display', 'block');
     }, 10000);
     
     $('#welcome-modal').on('shown.bs.modal', function () {

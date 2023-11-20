@@ -86,6 +86,7 @@ canvas {
 /* ================================================= Footer ================================================= */
 
 footer {
+  display: none;
   position: fixed;
   font-weight: bold;
   bottom: 0;
