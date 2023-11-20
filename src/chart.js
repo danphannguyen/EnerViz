@@ -14,7 +14,6 @@ import National from '../Data Mix/ResultatJSON/National.json' assert { type: "js
 
 import { Application } from '@splinetool/runtime';
 
-
 // Permet de récupérer tout les JSON dans une liste que l'on pourra parcourir
 let arrayData = [Bretagne, IDF, Auvergne, Bourgogne, Centre, GrandEst, HautsDeFrance, Normandie, NouvelleAquitaine, Occitanie, PaysDeLaLoire, PACA];
 
@@ -92,6 +91,8 @@ document.getElementById('monGraphique').onclick = function(evt) {
     } 
 };
 
+
+
 //Légende à droite
 myChart.options.plugins.legend.position = 'bottom';
 myChart.update();
@@ -116,7 +117,7 @@ window.addEventListener('load', function () {
 const canvas = document.getElementById('canvas3d');
 const app = new Application(canvas);
 
-app.load('./scene/scene.splinecode')
+app.load('https://prod.spline.design/7ro9L-eFB8YM5Ktn/scene.splinecode')
     .then(() => {
         console.log('Scène chargée avec succès!');
     })
