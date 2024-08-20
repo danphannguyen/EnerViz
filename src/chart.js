@@ -1,16 +1,16 @@
 import Bretagne from '../Data Mix/ResultatJSON/Bretagne.json';
-import IDF from '../Data Mix/ResultatJSON/IledeFrance.json' assert { type: "json" };
-import Auvergne from '../Data Mix/ResultatJSON/Auvergne.json' assert { type: "json" };
-import Bourgogne from '../Data Mix/ResultatJSON/Bourgogne.json' assert { type: "json" };
-import Centre from '../Data Mix/ResultatJSON/Centre.json' assert { type: "json" };
-import GrandEst from '../Data Mix/ResultatJSON/GrandEst.json' assert { type: "json" };
-import HautsDeFrance from '../Data Mix/ResultatJSON/HautsdeFrance.json' assert { type: "json" };
-import Normandie from '../Data Mix/ResultatJSON/Normandie.json' assert { type: "json" };
-import NouvelleAquitaine from '../Data Mix/ResultatJSON/NouvelleAquitaine.json' assert { type: "json" };
-import Occitanie from '../Data Mix/ResultatJSON/Occitanie.json' assert { type: "json" };
-import PaysDeLaLoire from '../Data Mix/ResultatJSON/PaysdelaLoire.json' assert { type: "json" };
-import PACA from '../Data Mix/ResultatJSON/PACA.json' assert { type: "json" };
-import National from '../Data Mix/ResultatJSON/National.json' assert { type: "json" };
+import IDF from '../Data Mix/ResultatJSON/IledeFrance.json';
+import Auvergne from '../Data Mix/ResultatJSON/Auvergne.json';
+import Bourgogne from '../Data Mix/ResultatJSON/Bourgogne.json';
+import Centre from '../Data Mix/ResultatJSON/Centre.json';
+import GrandEst from '../Data Mix/ResultatJSON/GrandEst.json';
+import HautsDeFrance from '../Data Mix/ResultatJSON/HautsdeFrance.json';
+import Normandie from '../Data Mix/ResultatJSON/Normandie.json';
+import NouvelleAquitaine from '../Data Mix/ResultatJSON/NouvelleAquitaine.json';
+import Occitanie from '../Data Mix/ResultatJSON/Occitanie.json';
+import PaysDeLaLoire from '../Data Mix/ResultatJSON/PaysdelaLoire.json';
+import PACA from '../Data Mix/ResultatJSON/PACA.json';
+import National from '../Data Mix/ResultatJSON/National.json';
 
 import { Application } from '@splinetool/runtime';
 
