@@ -2,22 +2,22 @@ import { Application } from '@splinetool/runtime';
 
 // Liste des chemins vers les fichiers JSON de région
 const regionFiles = [
-    '../Data_Mix/ResultatJSON/Bretagne.json',
-    '../Data_Mix/ResultatJSON/IledeFrance.json',
-    '../Data_Mix/ResultatJSON/Auvergne.json',
-    '../Data_Mix/ResultatJSON/Bourgogne.json',
-    '../Data_Mix/ResultatJSON/Centre.json',
-    '../Data_Mix/ResultatJSON/GrandEst.json',
-    '../Data_Mix/ResultatJSON/HautsdeFrance.json',
-    '../Data_Mix/ResultatJSON/Normandie.json',
-    '../Data_Mix/ResultatJSON/NouvelleAquitaine.json',
-    '../Data_Mix/ResultatJSON/Occitanie.json',
-    '../Data_Mix/ResultatJSON/PaysdelaLoire.json',
-    '../Data_Mix/ResultatJSON/PACA.json'
+    'Data_Mix/ResultatJSON/Bretagne.json',
+    'Data_Mix/ResultatJSON/IledeFrance.json',
+    'Data_Mix/ResultatJSON/Auvergne.json',
+    'Data_Mix/ResultatJSON/Bourgogne.json',
+    'Data_Mix/ResultatJSON/Centre.json',
+    'Data_Mix/ResultatJSON/GrandEst.json',
+    'Data_Mix/ResultatJSON/HautsdeFrance.json',
+    'Data_Mix/ResultatJSON/Normandie.json',
+    'Data_Mix/ResultatJSON/NouvelleAquitaine.json',
+    'Data_Mix/ResultatJSON/Occitanie.json',
+    'Data_Mix/ResultatJSON/PaysdelaLoire.json',
+    'Data_Mix/ResultatJSON/PACA.json'
 ];
 
 // Chemin vers le fichier National.json
-const nationalFile = '../Data_Mix/ResultatJSON/National.json';
+const nationalFile = 'Data_Mix/ResultatJSON/National.json';
 
 // Fonction pour charger un fichier JSON
 async function fetchJSON(url) {
