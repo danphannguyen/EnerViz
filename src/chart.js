@@ -19,19 +19,19 @@ async function loadData() {
     try {
         // Chemins des fichiers JSON
         const urls = [
-            '/Data Mix/ResultatJSON/Bretagne.json',
-            '/Data Mix/ResultatJSON/IledeFrance.json',
-            '/Data Mix/ResultatJSON/Auvergne.json',
-            '/Data Mix/ResultatJSON/Bourgogne.json',
-            '/Data Mix/ResultatJSON/Centre.json',
-            '/Data Mix/ResultatJSON/GrandEst.json',
-            '/Data Mix/ResultatJSON/HautsdeFrance.json',
-            '/Data Mix/ResultatJSON/Normandie.json',
-            '/Data Mix/ResultatJSON/NouvelleAquitaine.json',
-            '/Data Mix/ResultatJSON/Occitanie.json',
-            '/Data Mix/ResultatJSON/PaysdelaLoire.json',
-            '/Data Mix/ResultatJSON/PACA.json',
-            '/Data Mix/ResultatJSON/National.json'
+            '/Data_Mix/ResultatJSON/Bretagne.json',
+            '/Data_Mix/ResultatJSON/IledeFrance.json',
+            '/Data_Mix/ResultatJSON/Auvergne.json',
+            '/Data_Mix/ResultatJSON/Bourgogne.json',
+            '/Data_Mix/ResultatJSON/Centre.json',
+            '/Data_Mix/ResultatJSON/GrandEst.json',
+            '/Data_Mix/ResultatJSON/HautsdeFrance.json',
+            '/Data_Mix/ResultatJSON/Normandie.json',
+            '/Data_Mix/ResultatJSON/NouvelleAquitaine.json',
+            '/Data_Mix/ResultatJSON/Occitanie.json',
+            '/Data_Mix/ResultatJSON/PaysdelaLoire.json',
+            '/Data_Mix/ResultatJSON/PACA.json',
+            '/Data_Mix/ResultatJSON/National.json'
         ];
         
         // Charger toutes les données JSON en parallèle
