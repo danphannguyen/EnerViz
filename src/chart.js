@@ -1,4 +1,4 @@
-import Bretagne from '../Data Mix/ResultatJSON/Bretagne.json' assert { type: "json" };
+import Bretagne from '../Data Mix/ResultatJSON/Bretagne.json';
 import IDF from '../Data Mix/ResultatJSON/IledeFrance.json' assert { type: "json" };
 import Auvergne from '../Data Mix/ResultatJSON/Auvergne.json' assert { type: "json" };
 import Bourgogne from '../Data Mix/ResultatJSON/Bourgogne.json' assert { type: "json" };
