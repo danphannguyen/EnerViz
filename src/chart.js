@@ -130,7 +130,7 @@ loadData().then(({ dataArray, arrayDataNational }) => {
     myChart.update();
 
     //Initialisation du loader, attente de 10 secondes avant de le cacher et d'afficher la modal 
-    window.addEventListener('load', function () {
+    window.addEventListener("load", function () {
         setTimeout(function () {
             document.getElementById('loader').style.display = 'none';
             $('#welcome-modal').modal('show');
