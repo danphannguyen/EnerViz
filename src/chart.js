@@ -130,12 +130,10 @@ loadData().then(({ dataArray, arrayDataNational }) => {
     myChart.update();
 
     //Initialisation du loader, attente de 10 secondes avant de le cacher et d'afficher la modal 
-    window.addEventListener("load", function () {
-        setTimeout(function () {
-            document.getElementById('loader').style.display = 'none';
-            $('#welcome-modal').modal('show');
-            $('footer').css('display', 'block');
-        }, 10000);
+    setTimeout(function () {
+        document.getElementById('loader').style.display = 'none';
+        $('#welcome-modal').modal('show');
+        $('footer').css('display', 'block');
 
         $('#welcome-modal').on('shown.bs.modal', function () {
             $('#mentionlegales').css('pointer-events', 'none');
@@ -144,7 +142,8 @@ loadData().then(({ dataArray, arrayDataNational }) => {
         $('#welcome-modal').on('hidden.bs.modal', function () {
             $('#mmentionlegales').css('pointer-events', 'auto');
         });
-    });
+
+    }, 10000);
 
     // Initialisation de canvas Spline
     const canvas = document.getElementById('canvas3d');
