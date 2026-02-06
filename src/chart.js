@@ -2,22 +2,22 @@ import { Application } from '@splinetool/runtime';
 
 // Liste des chemins vers les fichiers JSON de région
 const regionFiles = [
-    'https://danphannguyen.github.io/EnerViz/Data_Mix/ResultatJSON/Bretagne.json',
-    'https://danphannguyen.github.io/EnerViz/Data_Mix/ResultatJSON/IledeFrance.json',
-    'https://danphannguyen.github.io/EnerViz/Data_Mix/ResultatJSON/Auvergne.json',
-    'https://danphannguyen.github.io/EnerViz/Data_Mix/ResultatJSON/Bourgogne.json',
-    'https://danphannguyen.github.io/EnerViz/Data_Mix/ResultatJSON/Centre.json',
-    'https://danphannguyen.github.io/EnerViz/Data_Mix/ResultatJSON/GrandEst.json',
-    'https://danphannguyen.github.io/EnerViz/Data_Mix/ResultatJSON/HautsdeFrance.json',
-    'https://danphannguyen.github.io/EnerViz/Data_Mix/ResultatJSON/Normandie.json',
-    'https://danphannguyen.github.io/EnerViz/Data_Mix/ResultatJSON/NouvelleAquitaine.json',
-    'https://danphannguyen.github.io/EnerViz/Data_Mix/ResultatJSON/Occitanie.json',
-    'https://danphannguyen.github.io/EnerViz/Data_Mix/ResultatJSON/PaysdelaLoire.json',
-    'https://danphannguyen.github.io/EnerViz/Data_Mix/ResultatJSON/PACA.json'
+    'https://danphannguyen.github.io/iutge-project-enerviz/Data_Mix/ResultatJSON/Bretagne.json',
+    'https://danphannguyen.github.io/iutge-project-enerviz/Data_Mix/ResultatJSON/IledeFrance.json',
+    'https://danphannguyen.github.io/iutge-project-enerviz/Data_Mix/ResultatJSON/Auvergne.json',
+    'https://danphannguyen.github.io/iutge-project-enerviz/Data_Mix/ResultatJSON/Bourgogne.json',
+    'https://danphannguyen.github.io/iutge-project-enerviz/Data_Mix/ResultatJSON/Centre.json',
+    'https://danphannguyen.github.io/iutge-project-enerviz/Data_Mix/ResultatJSON/GrandEst.json',
+    'https://danphannguyen.github.io/iutge-project-enerviz/Data_Mix/ResultatJSON/HautsdeFrance.json',
+    'https://danphannguyen.github.io/iutge-project-enerviz/Data_Mix/ResultatJSON/Normandie.json',
+    'https://danphannguyen.github.io/iutge-project-enerviz/Data_Mix/ResultatJSON/NouvelleAquitaine.json',
+    'https://danphannguyen.github.io/iutge-project-enerviz/Data_Mix/ResultatJSON/Occitanie.json',
+    'https://danphannguyen.github.io/iutge-project-enerviz/Data_Mix/ResultatJSON/PaysdelaLoire.json',
+    'https://danphannguyen.github.io/iutge-project-enerviz/Data_Mix/ResultatJSON/PACA.json'
 ];
 
 // Chemin vers le fichier National.json
-const nationalFile = 'https://danphannguyen.github.io/EnerViz/Data_Mix/ResultatJSON/National.json';
+const nationalFile = 'https://danphannguyen.github.io/iutge-project-enerviz/Data_Mix/ResultatJSON/National.json';
 
 // Fonction pour charger un fichier JSON
 async function fetchJSON(url) {
