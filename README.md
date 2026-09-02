@@ -24,4 +24,4 @@ Andy RABARISON : ( Intégrateur 3D / Rédacteur )
 5) Cliquer sur "Dave" l'ampoule pour obtenir un popup d'aide
 
 
-https://danphannguyen.github.io/EnerViz/
+[https://danphannguyen.github.io/EnerViz/](https://danphannguyen.github.io/iutge_project-enerviz/)
